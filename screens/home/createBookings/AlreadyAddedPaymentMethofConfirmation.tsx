@@ -35,18 +35,18 @@ export default () => {
                         pickupTime={moment(departureTime)}
                         dropOffLocation={returnLocation?.internalcode}
                         dropoffTime={moment(returnTime)}
-                      
+
                         carName={vehicle.name}
                         registratioNumber={"RC00786587"}
                         finalCost={vehicle.price}
                         currencyCode={vehicle.currency}
                         arrivalTime={moment(returnTime)}
                         image_preview_url={vehicle.image_preview_url}
-                      
+
                         leftImageUri={vehicle.supplier_logo}
-                      
+
                         reservationNumber={"0000"}
-                      
+
                     />
 
 

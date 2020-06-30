@@ -45,7 +45,7 @@ export default () => {
                         }}
                         onReturnLocationSelected={(l) => setReturnLocation(l)}
                     />
-                    
+
                     <TimeCheckbox
                         checked={inmediatePickup == undefined ? undefined : inmediatePickup}
                         style={{ marginBottom: '5%' }}

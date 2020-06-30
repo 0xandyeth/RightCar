@@ -39,7 +39,7 @@ const DocumentScreen = () => {
           disabled={loading}
           accessoryRight={loading ? LoadingSpinner : undefined}
           onPress={() => {
-            if (email == null) return 
+            if (email == null) return
             doRecover({ data: {
               module_name: 'RECOVER_PASS',
               username: email

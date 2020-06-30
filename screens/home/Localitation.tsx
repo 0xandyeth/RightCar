@@ -34,7 +34,7 @@ const DocumentScreen = () => {
             name: route.params.passTo,
             params: route.params.parentProps,
           })
-  
+
           return CommonActions.reset({
             ...state,
             routes,
@@ -42,7 +42,7 @@ const DocumentScreen = () => {
           });
         });
       }
-  
+
       GPSState.addListener((status: any) => {
         switch (status) {
           case GPSState.NOT_DETERMINED:
@@ -50,20 +50,20 @@ const DocumentScreen = () => {
             //TODO: handle case when user does not authorize login
             Alert.alert(':(','Please, allow the location, for us to do amazing things for you!')
             break;
-  
+
           case GPSState.RESTRICTED:
             setIsLocationGprsAuthorized(false)
             GPSState.openLocationSettings()
             navigation.goBack()
             break;
-  
+
           case GPSState.DENIED:
             setIsLocationGprsAuthorized(false)
             //TODO: handle case when user does not authorize login
             Alert.alert(':(','It`s a shame that you do not allowed us to use location :(')
             navigation.goBack()
             break;
-  
+
           case GPSState.AUTHORIZED_ALWAYS:
             console.log('GPSState.AUTHORIZED_ALWAYS')
             setIsLocationGprsAuthorized(true)
@@ -75,7 +75,7 @@ const DocumentScreen = () => {
                 name: route.params.passTo,
                 params: route.params.parentProps,
               })
-  
+
               return CommonActions.reset({
                 ...state,
                 routes,
@@ -83,7 +83,7 @@ const DocumentScreen = () => {
               });
             });
             break;
-  
+
           case GPSState.AUTHORIZED_WHENINUSE:
             console.log('GPSState.AUTHORIZED_WHENINUSE')
             setIsLocationGprsAuthorized(true)
@@ -95,7 +95,7 @@ const DocumentScreen = () => {
                 name: route.params.passTo,
                 params: route.params.parentProps,
               })
-  
+
               return CommonActions.reset({
                 ...state,
                 routes,

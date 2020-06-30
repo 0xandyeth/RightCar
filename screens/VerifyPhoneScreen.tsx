@@ -112,8 +112,8 @@ const DocumentScreen = () => {
                 if (res.data.vphone == 1 && res.data.vemail == 1) navigation.navigate('Home')
               })
             }
-            
-              
+
+
           }}
           size="giant"
           disabled={loading}
@@ -139,7 +139,7 @@ const DocumentScreen = () => {
           <Text
             onPress={() => {
               if (!profile) return
-              
+
               if (profile && profile.vphone != 1) {
                 doVerify({ data: {
                   "module_name": "RESEND_VERIFY",

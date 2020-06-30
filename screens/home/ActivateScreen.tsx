@@ -6,19 +6,11 @@ import TripCard, { TripCardProps } from '../../partials/TripCard';
 import { useRoute, useNavigation } from '@react-navigation/native';
 import { GRCGDS_BACKEND } from 'react-native-dotenv'
 
-import { NativeModules, NativeEventEmitter } from 'react-native';
+import { NativeModules} from 'react-native';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import LoadingSpinner from '../../partials/LoadingSpinner';
 
-const eventEmitter = new NativeEventEmitter();
 
-eventEmitter.addListener('DeviceStatus', (event) => {
-  console.log(event) // "someValue"
-});
-
-eventEmitter.addListener('turnOnBluetoothDevice', (event) => {
-  console.log(event) // "someValue"
-});
 
 const DocumentScreen = () => {
   const route = useRoute();
