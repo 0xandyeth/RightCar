@@ -9,6 +9,8 @@ import Autocomplete from 'react-native-autocomplete-input';
 import FuzzySearch from 'fuzzy-search';
 import { GrcgdsLocation } from '../types';
 
+import { SF_UI_Display_Bold, SF_UI_Display_Regular } from '../constants/fonts'
+
 export type LocationSearchInputProps = {
   pickupLocation?: { [k: string]: any } | null
   returnLocation?: { [k: string]: any } | null
@@ -65,7 +67,7 @@ const LocationSearchInput: React.FC<LocationSearchInputProps> = (props) => {
         )}
         <Layout style={{ display: 'flex', flexDirection: 'column', width: '96%', marginLeft: '2%' }}>
           <Autocomplete
-            style={{ fontFamily: 'SF-UI-Display_Bold', fontSize: 16, width: '100%', borderColor: 'white', borderBottomColor: '#E4E9F2', borderBottomWidth: 1 }}
+            style={{ fontFamily: SF_UI_Display_Bold, fontSize: 16, width: '100%', borderColor: 'white', borderBottomColor: '#E4E9F2', borderBottomWidth: 1 }}
             containerStyle={{ width: '100%' }}
             inputContainerStyle={{ width: '100%', borderColor: 'white', borderBottomColor: 'black', borderBottomWidth: 1 }}
             listStyle={{ borderColor: 'white' }}
@@ -94,7 +96,7 @@ const LocationSearchInput: React.FC<LocationSearchInputProps> = (props) => {
           />
           {!returnSameLocation && (
             <Autocomplete
-              style={{ fontFamily: 'SF-UI-Display_Bold', fontSize: 16, width: '100%', borderColor: 'white', borderBottomColor: '#E4E9F2', borderBottomWidth: 1 }}
+              style={{ fontFamily: SF_UI_Display_Bold, fontSize: 16, width: '100%', borderColor: 'white', borderBottomColor: '#E4E9F2', borderBottomWidth: 1 }}
               containerStyle={{ width: '100%' }}
               inputContainerStyle={{ width: '100%', borderColor: 'white', borderBottomColor: 'black', borderBottomWidth: 1 }}
               listStyle={{ borderColor: 'white' }}

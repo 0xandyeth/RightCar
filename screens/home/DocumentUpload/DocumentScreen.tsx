@@ -10,6 +10,7 @@ import LoadingSpinner from '../../../partials/LoadingSpinner';
 import BackButton from '../../../partials/BackButton';
 import { FileTypeEnum, dispatchFileState, useDocumentState, Actions } from './DocumentState';
 import { useGlobalState } from '../../../state';
+import { SF_UI_Display_Bold, SF_UI_Display_Regular } from '../../../constants/fonts'
 
 const DocumentScreen = () => {
   const navigation = useNavigation();
@@ -46,7 +47,7 @@ const DocumentScreen = () => {
             <BackButton />
           </Layout>
         )}
-        <Text style={{ textAlign: 'left', fontSize: 24, fontFamily: 'SF-UI-Display_Bold' }} category='s2'>
+        <Text style={{ textAlign: 'left', fontSize: 24, fontFamily: SF_UI_Display_Bold }} category='s2'>
           Upload files
         </Text>
       </Layout>

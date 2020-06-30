@@ -69,16 +69,14 @@
 		<string>MaterialCommunityIcons.ttf</string>
 		<string>MaterialIcons.ttf</string>
 		<string>Octicons.ttf</string>
-		<string>SimpleLineIcons.ttf</string>
-		<string>Zocial.ttf</string>
-		<string>SF-UI-Display-Regular.otf</string>
-		<string>SF-UI-Display-Regular.ttf</string>
 		<string>OpenSans-Regular.ttf</string>
 		<string>Oswald-VariableFont_wght.ttf</string>
-		<string>VINCHAND.ttf</string>
-		<string>SF-UI-Display_Bold.ttf</string>
-		<string>SF-UI-Display_Bold.ttf</string>
+		<string>SFUIDisplayBold.ttf</string>
+		<string>SFUIDisplayRegular.ttf</string>
+		<string>SimpleLineIcons.ttf</string>
 		<string>VINCHAND_bold.ttf</string>
+		<string>VINCHAND.ttf</string>
+		<string>Zocial.ttf</string>
 	</array>
 </dict>
 </plist>

@@ -6,7 +6,7 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import moment from 'moment';
 import TripCard from '../../partials/TripCard';
 import ResolveCurrencySymbol from '../../utils/ResolveCurrencySymbol';
-
+import { SF_UI_Display_Bold, SF_UI_Display_Regular } from '../../constants/fonts'
 
 export default () => {
     const navigation = useNavigation();
@@ -47,7 +47,7 @@ export default () => {
                                 paddingRight: 20,
                                 marginBottom: '2%'
                             }}>
-                            {() => <Text style={{ color: 'white', fontFamily: 'SF-UI-Display_Bold', fontSize: 18 }}>Go My Trips</Text>}
+                            {() => <Text style={{ color: 'white', fontFamily: SF_UI_Display_Bold, fontSize: 18 }}>Go My Trips</Text>}
                         </Button>
                     </Layout>
                 </Layout>

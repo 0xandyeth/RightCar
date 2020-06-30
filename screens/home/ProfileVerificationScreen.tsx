@@ -24,6 +24,7 @@ import moment from 'moment';
 import DocumentPicker, { DocumentPickerResponse } from 'react-native-document-picker';
 import { axiosInstance } from '../../utils/AxiosBootstrap';
 import * as Progress from 'react-native-progress';
+import { SF_UI_Display_Bold, SF_UI_Display_Regular } from '../../constants/fonts'
 
 const options = {
     title: 'Select picture',
@@ -419,7 +420,7 @@ export default ({ navigation }: StackScreenProps<NonLoginScreenProps & LoginScre
                                         <Text style={{ color: 'black', textAlign: 'left', fontSize: 16, fontFamily: 'SF-UI-Display' }} category='s2'>
                                             We need you to upload your
                                             </Text>
-                                        <Text style={{ color: 'black', textAlign: 'left', fontSize: 26, fontFamily: 'SF-UI-Display_Bold' }} category='s2'>
+                                        <Text style={{ color: 'black', textAlign: 'left', fontSize: 26, fontFamily: SF_UI_Display_Bold }} category='s2'>
                                             {currentFileType}
                                         </Text>
                                     </View>}
@@ -552,7 +553,7 @@ export default ({ navigation }: StackScreenProps<NonLoginScreenProps & LoginScre
                                                     return (
                                                         <>
                                                             <EntypoIcon style={{ marginRight: '5%', color: 'white' }} size={24} name="camera" />
-                                                            <Text style={{ fontFamily: 'SF-UI-Display_Bold', color: 'white', fontSize: 18 }}>
+                                                            <Text style={{ fontFamily: SF_UI_Display_Bold, color: 'white', fontSize: 18 }}>
                                                                 Use Camera
                                                             </Text>
                                                         </>
@@ -584,7 +585,7 @@ export default ({ navigation }: StackScreenProps<NonLoginScreenProps & LoginScre
                                             <Layout style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', height: dictionary.get(currentFileType)?.file ? '23%' : '40%', alignItems: dictionary.get(currentFileType)?.file ? 'flex-end' : 'center' }}>
 
                                                 <EntypoIcon style={{ marginRight: '5%', color: 'black', textAlign: 'center', }} size={24} name="images" />
-                                                <Text style={{ color: 'black', textAlign: 'center', fontSize: 16, fontFamily: 'SF-UI-Display_Bold' }} category='s2'>
+                                                <Text style={{ color: 'black', textAlign: 'center', fontSize: 16, fontFamily: SF_UI_Display_Bold }} category='s2'>
                                                     Select the document from gallery
                                                         </Text>
                                             </Layout>
@@ -618,7 +619,7 @@ export default ({ navigation }: StackScreenProps<NonLoginScreenProps & LoginScre
                                     elevation: 10,
                                 }}>
                                 {() => {
-                                    return <Text style={{ fontFamily: 'SF-UI-Display_Bold', color: loading ? "#ACB1C0" : 'white', fontSize: 18 }}>
+                                    return <Text style={{ fontFamily: SF_UI_Display_Bold, color: loading ? "#ACB1C0" : 'white', fontSize: 18 }}>
                                         {resolveFormState().btnTxt}
                                     </Text>
                                 }}

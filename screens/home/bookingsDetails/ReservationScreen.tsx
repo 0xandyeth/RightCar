@@ -15,6 +15,7 @@ import CompletedReportScreen from './CompletedReportScreen';
 import AgreementScreen from './AgreementScreen';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useCarDetailState } from './detailsState';
+import { SF_UI_Display_Bold, SF_UI_Display_Regular } from '../../../constants/fonts'
 
 const DocumentScreen = () => {
   const route = useRoute();
@@ -28,7 +29,7 @@ const DocumentScreen = () => {
               <Text style={{ textAlign: 'center' }} category="h6">
                 CONFIRMATION
               </Text>
-              <Text style={{ lineHeight: 20, textAlign: 'center', fontFamily: 'SF-UI-Display_Bold', fontSize: 18 }} >
+              <Text style={{ lineHeight: 20, textAlign: 'center', fontFamily: SF_UI_Display_Bold, fontSize: 18 }} >
                 {route.params.registratioNumber}{' '}
               </Text>
               <Image
@@ -39,7 +40,7 @@ const DocumentScreen = () => {
 
             <View style={{ flexDirection: 'row', display: 'flex', justifyContent: 'space-around' }}>
               <Layout style={{ marginBottom: '3%' }}>
-                <Text style={{ textAlign: 'center', color: 'grey', fontFamily: 'SF-UI-Display_Bold' }} category="c2">
+                <Text style={{ textAlign: 'center', color: 'grey', fontFamily: SF_UI_Display_Bold }} category="c2">
                   Pickup Location
                   </Text>
                 <Text style={{ textAlign: 'center', fontFamily: 'SF-UI-Display', fontSize: 14 }}>
@@ -48,7 +49,7 @@ const DocumentScreen = () => {
               </Layout>
 
               <Layout style={{ marginBottom: '3%' }}>
-                <Text style={{ textAlign: 'center', color: 'grey', fontFamily: 'SF-UI-Display_Bold' }} category="c2">
+                <Text style={{ textAlign: 'center', color: 'grey', fontFamily: SF_UI_Display_Bold }} category="c2">
                   Dropout Location
               </Text>
                 <Text style={{ textAlign: 'center', fontFamily: 'SF-UI-Display', fontSize: 14 }}>
@@ -59,7 +60,7 @@ const DocumentScreen = () => {
 
             <View style={{ flexDirection: 'row', display: 'flex', justifyContent: 'space-around' }}>
               <Layout style={{ marginBottom: '3%' }}>
-                <Text style={{ textAlign: 'center', color: 'grey', fontFamily: 'SF-UI-Display_Bold' }} category="c2">
+                <Text style={{ textAlign: 'center', color: 'grey', fontFamily: SF_UI_Display_Bold }} category="c2">
                   Pickup Time
                   </Text>
                 <Text style={{ textAlign: 'center', fontFamily: 'SF-UI-Display', fontSize: 14 }}>
@@ -68,7 +69,7 @@ const DocumentScreen = () => {
               </Layout>
 
               <Layout style={{ marginBottom: '3%' }}>
-                <Text style={{ textAlign: 'center', color: 'grey', fontFamily: 'SF-UI-Display_Bold' }} category="c2">
+                <Text style={{ textAlign: 'center', color: 'grey', fontFamily: SF_UI_Display_Bold }} category="c2">
                   Dropout Time
               </Text>
                 <Text style={{ textAlign: 'center', fontFamily: 'SF-UI-Display', fontSize: 14 }}>
@@ -79,7 +80,7 @@ const DocumentScreen = () => {
 
 
             <Layout style={{ marginBottom: '3%' }}>
-              <Text style={{ textAlign: 'center', color: 'grey', fontFamily: 'SF-UI-Display_Bold' }} category="c2">
+              <Text style={{ textAlign: 'center', color: 'grey', fontFamily: SF_UI_Display_Bold }} category="c2">
                 Final Cost
               </Text>
               <Text style={{ textAlign: 'center', fontFamily: 'SF-UI-Display', fontSize: 14 }}>
@@ -89,7 +90,7 @@ const DocumentScreen = () => {
             </Layout>
 
             <Layout style={{ width: '75%', marginLeft: 'auto', marginRight: 'auto' }}>
-              <Text style={{ textAlign: 'center', color: 'grey', fontFamily: 'SF-UI-Display_Bold' }} category="c2">
+              <Text style={{ textAlign: 'center', color: 'grey', fontFamily: SF_UI_Display_Bold }} category="c2">
                 Pickup Instructions
               </Text>
               <Text style={{ textAlign: 'center', fontFamily: 'SF-UI-Display', fontSize: 16 }}>

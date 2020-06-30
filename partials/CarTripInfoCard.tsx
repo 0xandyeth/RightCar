@@ -7,6 +7,7 @@ import { useNavigation } from '@react-navigation/native';
 import ResolveCurrencySymbol from '../utils/ResolveCurrencySymbol';
 import useAxios from 'axios-hooks'
 import Decimal from 'decimal.js';
+import { SF_UI_Display_Bold, SF_UI_Display_Regular } from '../constants/fonts'
 
 export type TripCardProps = {
   pickupLocation: string
@@ -63,7 +64,7 @@ const CarTripInfoCard: React.FC<TripCardProps> = (props) => {
               <Text style={{ textAlign: 'center' }} category="h6">
                 Reservation Number
               </Text>
-              <Text style={{ textAlign: 'center',fontFamily: 'SF-UI-Display_Bold' }} category="h6">
+              <Text style={{ textAlign: 'center',fontFamily: SF_UI_Display_Bold }} category="h6">
                 {props.reservationNumber}
               </Text>
             </Layout>
@@ -88,11 +89,11 @@ const CarTripInfoCard: React.FC<TripCardProps> = (props) => {
             </Layout>
             <Layout style={{ display: 'flex', flexDirection: 'column', width: '90%' }}>
               <Layout style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', marginBottom: '5%' }}>
-                <Text style={{ fontSize: 16, fontFamily: 'SF-UI-Display_Bold' }}>{props.pickupLocation}</Text>
+                <Text style={{ fontSize: 16, fontFamily: SF_UI_Display_Bold }}>{props.pickupLocation}</Text>
                 <Text style={{ color: '#ACB1C0', fontSize: 13 }}>{props.pickupTime.format('HH:mm')}</Text>
               </Layout>
               <Layout style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
-                <Text style={{ fontSize: 16, fontFamily: 'SF-UI-Display_Bold' }}>{props.dropOffLocation}</Text>
+                <Text style={{ fontSize: 16, fontFamily: SF_UI_Display_Bold }}>{props.dropOffLocation}</Text>
                 <Text style={{ color: '#ACB1C0', fontSize: 13 }}>{props.dropoffTime.format('DD MMM, HH:mm')}</Text>
               </Layout>
             </Layout>
@@ -103,11 +104,11 @@ const CarTripInfoCard: React.FC<TripCardProps> = (props) => {
           <Layout style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', paddingBottom: '5%', paddingLeft: '5%', paddingRight: '5%', borderBottomLeftRadius: (props.upcoming || props.completed) ? 0 : 16, borderBottomRightRadius: (props.upcoming || props.completed) ? 0 : 16 }}>
             <Layout style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end',width: '100%' }}>
               <Layout style={{ display: 'flex'}}>
-                <Text style={{ fontFamily: 'SF-UI-Display_Bold', fontSize: 16 }} numberOfLines={1} textBreakStrategy="balanced" category='h6'>{props.carName}</Text>
+                <Text style={{ fontFamily: SF_UI_Display_Bold, fontSize: 16 }} numberOfLines={1} textBreakStrategy="balanced" category='h6'>{props.carName}</Text>
               </Layout>
               <Layout style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <Text style={{ color: '#ACB1C0', fontSize: 13 }}>Final cost</Text>
-                <Text style={{ fontSize: 15, fontFamily: 'SF-UI-Display_Bold' }}>{new Decimal(props.finalCost || 0).toFixed(2)}{ResolveCurrencySymbol(props.currencyCode)}</Text>
+                <Text style={{ fontSize: 15, fontFamily: SF_UI_Display_Bold }}>{new Decimal(props.finalCost || 0).toFixed(2)}{ResolveCurrencySymbol(props.currencyCode)}</Text>
               </Layout>
             </Layout>
 
