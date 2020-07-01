@@ -10,7 +10,7 @@ import { useCreateBookingState } from './CreateBookingState';
 import TimeCheckbox from '../../../partials/TimeCheckbox';
 import CarItem from '../../../partials/CarItem';
 import { VehVendorAvail, PricedEquip } from '../../../types/SearchVehicleResponse';
-import { SF_UI_Display_Bold, SF_UI_Display_Regular } from '../../../constants/fonts'
+import { AppFontBold, AppFontRegular } from '../../../constants/fonts'
 type ParamList = {
     CarExtras: {
         vehicle: VehVendorAvail;
@@ -66,7 +66,7 @@ export default () => {
                                 paddingRight: 20,
                                 marginBottom: '2%'
                             }}>
-                            {() => <Text style={{ color: 'white', fontFamily: SF_UI_Display_Bold, fontSize: 18 }}>CONTINUE</Text>}
+                            {() => <Text style={{ color: 'white', fontFamily: AppFontBold, fontSize: 18 }}>CONTINUE</Text>}
                         </Button>
                     </Layout>
                 </Layout>

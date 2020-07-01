@@ -7,7 +7,7 @@ import SignatureCapture from 'react-native-signature-capture';
 import { TouchableOpacity, TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { useFocusEffect } from '@react-navigation/native';
 import BackButton from '../../../partials/BackButton';
-import { SF_UI_Display_Bold, SF_UI_Display_Regular } from '../../../constants/fonts'
+import { AppFontBold, AppFontRegular } from '../../../constants/fonts'
 
 const DocumentScreen = ({ navigation }) => {
     const signRef = useRef<TextInput | null>(null);
@@ -50,7 +50,7 @@ const DocumentScreen = ({ navigation }) => {
                         shadowRadius: 13.16,
                         elevation: 10,
                     }}>
-                    {() => <Text style={{ color: 'white', fontFamily: SF_UI_Display_Bold, fontSize: 18 }}>Sign agreement</Text>}
+                    {() => <Text style={{ color: 'white', fontFamily: AppFontBold, fontSize: 18 }}>Sign agreement</Text>}
                 </Button>
 
             </Layout>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Text, CheckBox, Layout } from '@ui-kitten/components';
 import { ViewStyle, View, TextStyle } from 'react-native';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
-import { SF_UI_Display_Bold, SF_UI_Display_Regular } from '../constants/fonts'
+import { AppFontBold, AppFontRegular } from '../constants/fonts'
 export type TimeCheckboxProps = {
     title: string
     subTitle?: string
@@ -51,7 +51,7 @@ const TimeCheckbox: React.FC<TimeCheckboxProps> = ({ title, nonEditable, replace
             <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                 {Node}
                 <Layout style={{ backgroundColor: '#00000000' }}>
-                    <Text style={{ color: styles.textColor, fontFamily: SF_UI_Display_Bold }}>{title}</Text>
+                    <Text style={{ color: styles.textColor, fontFamily: AppFontBold }}>{title}</Text>
                     {subTitle && <Text style={{ color: styles.textColor }}>{subTitle}</Text>}
                 </Layout>
             </View>

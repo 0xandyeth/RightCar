@@ -7,7 +7,7 @@ import ResolveTransmission from '../utils/ResolveTransmission';
 import ResolveCurrencySymbol from '../utils/ResolveCurrencySymbol';
 import GetCategoryByAcrissCode from '../utils/GetCategoryByAcrissCode';
 import { VehVendorAvail } from '../types/SearchVehicleResponse';
-import { SF_UI_Display_Bold, SF_UI_Display_Regular } from '../constants/fonts'
+import { AppFontBold, AppFontRegular } from '../constants/fonts'
 
 const hightLightStyles = {
     backgroundColor: '#41d5fb',
@@ -29,7 +29,7 @@ const CarItem: React.FC<Props> = ({ vehicle, isActive, onClick, style: customeSt
             <Layout style={{ paddingLeft: '3%', paddingRight: '3%', borderBottomColor: 'gray', borderBottomWidth: 1, display: 'flex', flexDirection: 'column', backgroundColor: currentStyles.backgroundColor, ...customeStyles }}>
                 <Layout style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', width: '70%', backgroundColor: '#00000000' }}>
                     <View>
-                        <Text style={{ fontSize: 14, fontFamily: SF_UI_Display_Bold, color: 'gray' }}>
+                        <Text style={{ fontSize: 14, fontFamily: AppFontBold, color: 'gray' }}>
                             {GetCategoryByAcrissCode(vehicle.Vehicle.VehType.VehicleCategory)}
                         </Text>
                     <Text style={{ fontSize: 16,}} >{vehicle.Vehicle.VehMakeModel.Name}</Text>
@@ -71,7 +71,7 @@ const CarItem: React.FC<Props> = ({ vehicle, isActive, onClick, style: customeSt
             <Layout style={{ backgroundColor: '#00000000' }}>
                 <View style={{ display: 'flex', flexDirection: 'row' }}>
                     <FontAwesome5 style={{ marginRight: '2%' }} name={"gas-pump"} size={16} />
-                    <Text style={{ fontSize: 13, fontFamily: SF_UI_Display_Bold }}>
+                    <Text style={{ fontSize: 13, fontFamily: AppFontBold }}>
                                 Fuel policy:{' '}
                             </Text>
                 <Text style={{ fontSize: 13 }}>Same to Same</Text>
@@ -86,7 +86,7 @@ const CarItem: React.FC<Props> = ({ vehicle, isActive, onClick, style: customeSt
                 </Layout >
     <Layout style={{ display: 'flex', flexDirection: 'row', backgroundColor: '#00000000', marginLeft: 'auto' }}>
 
-    <Text style={{ fontFamily: SF_UI_Display_Bold, color: currentStyles.priceColor, fontSize: 18 }}> { vehicle.TotalCharge.RateTotalAmount }</Text >
+    <Text style={{ fontFamily: AppFontBold, color: currentStyles.priceColor, fontSize: 18 }}> { vehicle.TotalCharge.RateTotalAmount }</Text >
                 </Layout >
 
             </Layout >

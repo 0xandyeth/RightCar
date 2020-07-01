@@ -17,7 +17,7 @@ import UploadIconComponent from '../../../image/UploadIconComponent';
 import CountryPicker, { getAllCountries, FlagType } from 'react-native-country-picker-modal'
 import * as Progress from 'react-native-progress';
 import { useFocusEffect } from '@react-navigation/native';
-import { SF_UI_Display_Bold, SF_UI_Display_Regular } from '../../../constants/fonts'
+import { AppFontBold, AppFontRegular } from '../../../constants/fonts'
 
 const DATE_FORMAT = 'MMM DD,YYYY'
 const formatDateService = new NativeDateService('en', { format: DATE_FORMAT });
@@ -158,7 +158,7 @@ const DocumentScreen = ({ route, navigation }: Props) => {
                         <>
                             <ScrollView keyboardShouldPersistTaps={"handled"} contentContainerStyle={{ flexGrow: 1 }}>
                                 <Layout style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', zIndex: 2 }}>
-                                    <Text style={{ textAlign: 'center', fontSize: 24, fontFamily: SF_UI_Display_Bold }} category='s2'>
+                                    <Text style={{ textAlign: 'center', fontSize: 24, fontFamily: AppFontBold }} category='s2'>
                                         {currentFileType}
                                     </Text>
                                 </Layout>
@@ -182,7 +182,7 @@ const DocumentScreen = ({ route, navigation }: Props) => {
                                     <Text style={{ color: 'black', textAlign: 'left', fontSize: 16, fontFamily: 'SF-UI-Display' }} category='s2'>
                                         We need you to upload your
                                     </Text>
-                                    <Text style={{ color: 'black', textAlign: 'left', fontSize: 26, fontFamily: SF_UI_Display_Bold }} category='s2'>
+                                    <Text style={{ color: 'black', textAlign: 'left', fontSize: 26, fontFamily: AppFontBold }} category='s2'>
                                         {currentFileType}
                                     </Text>
                                 </View>}
@@ -321,7 +321,7 @@ const DocumentScreen = ({ route, navigation }: Props) => {
                                                 return (
                                                     <>
                                                         <EntypoIcon style={{ marginRight: '5%', color: 'white' }} size={24} name="camera" />
-                                                        <Text style={{ fontFamily: SF_UI_Display_Bold, color: 'white', fontSize: 18 }}>
+                                                        <Text style={{ fontFamily: AppFontBold, color: 'white', fontSize: 18 }}>
                                                             Use Camera
                                                     </Text>
                                                     </>
@@ -342,7 +342,7 @@ const DocumentScreen = ({ route, navigation }: Props) => {
                                     }}>
 
                                     <EntypoIcon style={{ marginRight: '5%', color: 'black' }} size={24} name="images" />
-                                    <Text style={{ color: 'black', textAlign: 'left', fontSize: 16, fontFamily: SF_UI_Display_Bold }} category='s2'>
+                                    <Text style={{ color: 'black', textAlign: 'left', fontSize: 16, fontFamily: AppFontBold }} category='s2'>
                                         Select the document from gallery
                                     </Text>
 
@@ -378,7 +378,7 @@ const DocumentScreen = ({ route, navigation }: Props) => {
                                         shadowRadius: 13.16,
                                         elevation: 10,
                                     }}>
-                                    {() => <Text style={{ fontFamily: SF_UI_Display_Bold, color: 'white', fontSize: 18 }}>
+                                    {() => <Text style={{ fontFamily: AppFontBold, color: 'white', fontSize: 18 }}>
                                         {currenButtonState().btnTxt}
                                     </Text>}
                                 </Button>

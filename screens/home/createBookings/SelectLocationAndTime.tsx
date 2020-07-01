@@ -14,7 +14,7 @@ import moment from 'moment';
 import { GRCGDS_BACKEND } from 'react-native-dotenv';
 import LoadingSpinner from '../../../partials/LoadingSpinner';
 import { VehicleResponse } from '../../../types/SearchVehicleResponse';
-import { SF_UI_Display_Bold, SF_UI_Display_Regular } from '../../../constants/fonts'
+import { AppFontBold, AppFontRegular } from '../../../constants/fonts'
 
 export default () => {
     const navigation = useNavigation();
@@ -77,7 +77,7 @@ export default () => {
                                     setReturnTime(moment(d).add('days', 1).toDate())
                                 }}
                             />
-                            <Text style={{ fontFamily: SF_UI_Display_Bold }}>Return Time</Text>
+                            <Text style={{ fontFamily: AppFontBold }}>Return Time</Text>
                             <DatePicker
                                 minuteInterval={30}
                                 date={returnTime}
@@ -134,7 +134,7 @@ export default () => {
                             paddingRight: 20,
                             marginBottom: '2%'
                         }}>
-                        {() => <Text style={{ color: loading ? "#ACB1C0" : 'white', fontFamily: SF_UI_Display_Bold, fontSize: 18 }}>Search</Text>}
+                        {() => <Text style={{ color: loading ? "#ACB1C0" : 'white', fontFamily: AppFontBold, fontSize: 18 }}>Search</Text>}
                     </Button>
                 </Layout>
             </ScrollView >

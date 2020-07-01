@@ -28,7 +28,7 @@ import VerifyEmailScreen from './screens/VerifyEmailScreen';
 import { useGlobalState, dispatchGlobalState } from './state';
 import SplashScreen from 'react-native-splash-screen'
 import { Alert } from 'react-native';
-import { SF_UI_Display_Bold, SF_UI_Display_Regular } from './constants/fonts'
+import { AppFontBold, AppFontRegular } from './constants/fonts'
 
 const Stack = createStackNavigator();
 
@@ -42,7 +42,7 @@ export default () => {
     SplashScreen.hide()
   }, []);
   const j = { ...EvaMapping }
-  j.strict["text-font-family"] = SF_UI_Display_Regular
+  j.strict["text-font-family"] = AppFontRegular
   j.components.Input.appearances.default.variantGroups.status.basic.state.focused.borderColor = '#41D5FB'
   j.components.Input.appearances.default.variantGroups.status.basic.backgroundColor = "white"
 

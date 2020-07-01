@@ -12,7 +12,7 @@ import LoadingSpinner from '../../partials/LoadingSpinner';
 import { useGlobalState } from '../../state';
 import { BookingResponse } from '../../types/BookingsResponse';
 import Decimal from 'decimal.js';
-import { SF_UI_Display_Bold, SF_UI_Display_Regular } from '../../constants/fonts'
+import { AppFontBold, AppFontRegular } from '../../constants/fonts'
 
 var parseString = require('react-native-xml2js').parseString;
 
@@ -167,7 +167,7 @@ const DocumentScreen = () => {
             />
           </Layout>
           <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end', paddingRight: '5%', }}>
-            <Text style={{ alignSelf: 'flex-start', marginLeft: '3%', fontFamily: SF_UI_Display_Bold, fontSize: 29 }}>My Trips</Text>
+            <Text style={{ alignSelf: 'flex-start', marginLeft: '3%', fontFamily: AppFontBold, fontSize: 29 }}>My Trips</Text>
             <Button
               onPress={(e) => navigation.navigate("CreateBooking")}
               size="small"
@@ -176,7 +176,7 @@ const DocumentScreen = () => {
                 borderColor: '#41d5fb',
                 borderRadius: 10,
               }}>
-              {() => <Text style={{ fontFamily: SF_UI_Display_Bold, color: 'white', fontSize: 16 }}>Create Booking</Text>}
+              {() => <Text style={{ fontFamily: AppFontBold, color: 'white', fontSize: 16 }}>Create Booking</Text>}
             </Button>
           </View>
         </Layout>
@@ -186,7 +186,7 @@ const DocumentScreen = () => {
             indicatorStyle={{ backgroundColor: '#41d5fb' }}
             selectedIndex={selectedIndex}
             onSelect={index => setSelectedIndex(index)}>
-            <Tab style={{ paddingTop: '6%', paddingBottom: '1%' }} title={evaProps => <Text {...evaProps} style={{ fontFamily: SF_UI_Display_Bold, color: selectedIndex == 0 ? '#41d5fb' : '#aeb1c3' }}>ACTIVE</Text>} >
+            <Tab style={{ paddingTop: '6%', paddingBottom: '1%' }} title={evaProps => <Text {...evaProps} style={{ fontFamily: AppFontBold, color: selectedIndex == 0 ? '#41d5fb' : '#aeb1c3' }}>ACTIVE</Text>} >
               <Layout style={{ height: '86%' }}>
                 {!loading && activeTrips && activeTrips.length !== 0 && <List
                   style={{ backgroundColor: '#f7f9fc', padding: '5%', flexGrow: 1 }}
@@ -208,7 +208,7 @@ const DocumentScreen = () => {
                 )}
               </Layout>
             </Tab>
-            <Tab style={{ paddingTop: '6%', paddingBottom: '1%' }} title={evaProps => <Text {...evaProps} style={{ fontFamily: SF_UI_Display_Bold, color: selectedIndex == 1 ? '#41d5fb' : '#aeb1c3' }}>UPCOMING</Text>} >
+            <Tab style={{ paddingTop: '6%', paddingBottom: '1%' }} title={evaProps => <Text {...evaProps} style={{ fontFamily: AppFontBold, color: selectedIndex == 1 ? '#41d5fb' : '#aeb1c3' }}>UPCOMING</Text>} >
               <Layout style={{ height: '96%' }}>
                 {!loading && upcommingTrips && upcommingTrips.length !== 0 && <List
                   style={{ backgroundColor: '#f7f9fc', padding: '5%', flexGrow: 1, marginBottom: 70 }}
@@ -232,7 +232,7 @@ const DocumentScreen = () => {
               </Layout>
             </Tab>
 
-            <Tab style={{ paddingTop: '6%', paddingBottom: '1%' }} title={evaProps => <Text {...evaProps} style={{ fontFamily: SF_UI_Display_Bold, color: selectedIndex == 2 ? '#41d5fb' : '#aeb1c3' }}>COMPLETED</Text>} >
+            <Tab style={{ paddingTop: '6%', paddingBottom: '1%' }} title={evaProps => <Text {...evaProps} style={{ fontFamily: AppFontBold, color: selectedIndex == 2 ? '#41d5fb' : '#aeb1c3' }}>COMPLETED</Text>} >
               <Layout style={{ height: '96%' }}>
 
                 {!loading && completedTrips && completedTrips.length !== 0 && <List

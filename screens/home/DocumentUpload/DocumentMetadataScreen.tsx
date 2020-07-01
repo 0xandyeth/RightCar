@@ -13,7 +13,7 @@ import { Formik } from 'formik';
 import moment from 'moment';
 import useAxios from 'axios-hooks'
 import { useGlobalState, dispatchGlobalState } from '../../../state';
-import { SF_UI_Display_Bold, SF_UI_Display_Regular } from '../../../constants/fonts'
+import { AppFontBold, AppFontRegular } from '../../../constants/fonts'
 
 const DATE_FORMAT = 'MMM DD,YYYY'
 const formatDateService = new NativeDateService('en', { format: DATE_FORMAT });
@@ -93,7 +93,7 @@ const DocumentScreen = () => {
                   <Layout style={{ paddingRight: '3%' }}>
                     <BackButton />
                   </Layout>
-                  <Text style={{ textAlign: 'left', fontSize: 24, fontFamily: SF_UI_Display_Bold }} category='s2'>
+                  <Text style={{ textAlign: 'left', fontSize: 24, fontFamily: AppFontBold }} category='s2'>
                     Upload files
                   </Text>
                 </Layout>
@@ -201,7 +201,7 @@ const DocumentScreen = () => {
                     shadowRadius: 13.16,
                     elevation: 10,
                   }}>
-                  {() => <Text style={{ fontFamily: SF_UI_Display_Bold, color: 'white', fontSize: 18 }}>Save</Text>}
+                  {() => <Text style={{ fontFamily: AppFontBold, color: 'white', fontSize: 18 }}>Save</Text>}
                 </Button>
               </Layout>
             </>

@@ -20,8 +20,6 @@
 	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
-
-
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -36,12 +34,12 @@
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSApplicationQueriesSchemes</key>
-    <array>
+	<array>
 		<string>fbapi</string>
 		<string>fb-messenger-api</string>
 		<string>fbauth2</string>
 		<string>fbshareextension</string>
-    </array>
+	</array>
 	<key>FacebookAppID</key>
 	<string>2980272092000101</string>
 	<key>FacebookDisplayName</key>
@@ -61,10 +59,8 @@
 			</dict>
 		</dict>
 	</dict>
-
-
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string/>
 	<key>UIAppFonts</key>
 	<array>
 		<string>AntDesign.ttf</string>
@@ -83,12 +79,12 @@
 		<string>Octicons.ttf</string>
 		<string>OpenSans-Regular.ttf</string>
 		<string>Oswald-VariableFont_wght.ttf</string>
-		<string>SFUIDisplayBold.ttf</string>
-		<string>SFUIDisplayRegular.ttf</string>
 		<string>SimpleLineIcons.ttf</string>
 		<string>VINCHAND_bold.ttf</string>
 		<string>VINCHAND.ttf</string>
 		<string>Zocial.ttf</string>
+		<string>NunitoSans-Bold.ttf</string>
+		<string>NunitoSans-Regular.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
