@@ -87,7 +87,7 @@ export default () => {
                                 } else {
                                     setDepartureTime(d)
                                     setReturnTime(moment(d).add('days', 1).toDate())
-                                }}
+                                }}}
                             />
                             <Text style={{ fontFamily: AppFontBold }}>Return Time</Text>
                             <DatePicker
