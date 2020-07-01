@@ -16,6 +16,7 @@ import AgreementScreen from './AgreementScreen';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useCarDetailState } from './detailsState';
 import { AppFontBold, AppFontRegular } from '../../../constants/fonts'
+import MenuButton from '../../../partials/MenuButton';
 
 const DocumentScreen = () => {
   const route = useRoute();
@@ -25,9 +26,13 @@ const DocumentScreen = () => {
       <ScrollView contentContainerStyle={{ backgroundColor: 'white', flexGrow: 1 }}>
         <View style={{ paddingTop: '5%', height: '90%', paddingLeft: '5%', paddingRight: '5%', display: 'flex', flexDirection: 'column' }}>
           <View style={{ width: '100%' }}>
-            <Layout style={{ display: 'flex', alignItems: 'center' }}>
-              <Text style={{ textAlign: 'center' }} category="h6">
-                CONFIRMATION
+            <Layout style={{ display: 'flex', alignItems: 'center', flexDirection: 'row' }}>
+              <View style={{ position: 'absolute',height: '100%', display: 'flex', alignItems: 'center' }}>
+                <MenuButton />
+              </View>
+              <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                <Text style={{ textAlign: 'center' }} category="h5">
+                  CONFIRMATION
               </Text>
               <Text style={{ lineHeight: 20, textAlign: 'center', fontFamily: AppFontBold, fontSize: 18 }} >
                 {route.params.registratioNumber}{' '}
@@ -43,7 +48,7 @@ const DocumentScreen = () => {
                 <Text style={{ textAlign: 'center', color: 'grey', fontFamily: AppFontBold }} category="c2">
                   Pickup Location
                   </Text>
-                <Text style={{ textAlign: 'center', fontFamily: 'SF-UI-Display', fontSize: 14 }}>
+                <Text style={{ textAlign: 'center', fontFamily: 'SF-UI-Display', fontSize: 16 }}>
                   {route.params.pickupLocation}
                 </Text>
               </Layout>
@@ -52,7 +57,7 @@ const DocumentScreen = () => {
                 <Text style={{ textAlign: 'center', color: 'grey', fontFamily: AppFontBold }} category="c2">
                   Dropout Location
               </Text>
-                <Text style={{ textAlign: 'center', fontFamily: 'SF-UI-Display', fontSize: 14 }}>
+                <Text style={{ textAlign: 'center', fontFamily: 'SF-UI-Display', fontSize: 16 }}>
                   {route.params.dropOffLocation}
                 </Text>
               </Layout>
@@ -63,7 +68,7 @@ const DocumentScreen = () => {
                 <Text style={{ textAlign: 'center', color: 'grey', fontFamily: AppFontBold }} category="c2">
                   Pickup Time
                   </Text>
-                <Text style={{ textAlign: 'center', fontFamily: 'SF-UI-Display', fontSize: 14 }}>
+                <Text style={{ textAlign: 'center', fontFamily: 'SF-UI-Display', fontSize: 16 }}>
                   {route.params.pickupTime.format('HH:mm')}
                 </Text>
               </Layout>
@@ -72,7 +77,7 @@ const DocumentScreen = () => {
                 <Text style={{ textAlign: 'center', color: 'grey', fontFamily: AppFontBold }} category="c2">
                   Dropout Time
               </Text>
-                <Text style={{ textAlign: 'center', fontFamily: 'SF-UI-Display', fontSize: 14 }}>
+                <Text style={{ textAlign: 'center', fontFamily: 'SF-UI-Display', fontSize: 16 }}>
                   {route.params.dropoffTime.format('HH:mm')}
                 </Text>
               </Layout>
@@ -83,7 +88,7 @@ const DocumentScreen = () => {
               <Text style={{ textAlign: 'center', color: 'grey', fontFamily: AppFontBold }} category="c2">
                 Final Cost
               </Text>
-              <Text style={{ textAlign: 'center', fontFamily: 'SF-UI-Display', fontSize: 14 }}>
+              <Text style={{ textAlign: 'center', fontFamily: 'SF-UI-Display', fontSize: 16 }}>
                 {route.params.finalCost}
                 {ResolveCurrencySymbol(route.params.currencyCode)}
               </Text>
@@ -93,7 +98,7 @@ const DocumentScreen = () => {
               <Text style={{ textAlign: 'center', color: 'grey', fontFamily: AppFontBold }} category="c2">
                 Pickup Instructions
               </Text>
-              <Text style={{ textAlign: 'center', fontFamily: 'SF-UI-Display', fontSize: 16 }}>
+              <Text style={{ textAlign: 'center', fontFamily: 'SF-UI-Display', fontSize: 18 }}>
                 {route.params.pickUpInstructions}
               </Text>
             </Layout>

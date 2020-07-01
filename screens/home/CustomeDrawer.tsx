@@ -5,7 +5,6 @@ import {
     View,
     FlatList,
     Alert,
-    Image
 } from "react-native";
 
 import { Layout, Avatar, Text, Divider, Button, Modal, Card } from "@ui-kitten/components";
@@ -18,6 +17,24 @@ import { useIsDrawerOpen } from "@react-navigation/drawer";
 import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const menuData = [
+    { name: "Privacy Policy", screenName: "Policy", iconName: 'shield',key: 'swwe' },
+    { name: "Terms and Conditions", screenName: "TermsConditions", iconName: 'file-document',key: 'sdsfwwe' },
+    { name: "Help", screenName: "MyBookings",iconName: 'help',key: 'qwrfwwe' },
+    { name: "Logout", iconName: 'logout', key: 'assdrw', onPress: () => {
+        Alert.alert(
+            "Are you sure you want to logout?",
+            "You will be send the Sign in",
+            [
+                {
+                    text: "No",
+                    onPress: () => console.log("Cancel Pressed"),
+                    style: "cancel"
+                },
+                { text: "Yes", onPress: () => dispatchGlobalState({ type: 'logout' }) }
+            ],
+            { cancelable: false }
+        );
+    } },
 ];
 
 const DrawerMenu = ({ navigation }: { navigation: any }) => {
@@ -31,15 +48,15 @@ const DrawerMenu = ({ navigation }: { navigation: any }) => {
     useEffect(() => {
         if (hasFullProfile && hasAllFiles) {
             const found = menuData.find(i => i.key == "asd")
-            if (!found) menuData.push({ name: "My Trips", screenName: "MyBookings", key: 'asd' },);
+            if (!found) menuData.unshift({ name: "My Trips", screenName: "MyBookings", iconName: "car-side",iconSize: 30,key: 'asd' });
         }
     }, [wasDrawerOpen])
 
     return (
         <>
             <View style={styles.container}>
-                <TouchableOpacity style={{ paddingBottom: '5%'}} onPress={() => navigation.navigate("EditProfile")}>
-                    <Layout style={{ width: '100%', display: 'flex', flexDirection: 'row', justifyContent: 'center', position: 'relative' }}>
+                <TouchableOpacity onPress={() => navigation.navigate("EditProfile")}>
+                    <Layout style={{ width: '100%', display: 'flex', flexDirection: 'row', justifyContent: 'center', position: 'relative', borderBottomWidth: 1, borderBottomColor: 'grey', paddingBottom: '8%' }}>
                         {profile?.selfiurl == "" && (
                             <Avatar
                                 style={{ width: 125, height: 125, }}
@@ -56,12 +73,15 @@ const DrawerMenu = ({ navigation }: { navigation: any }) => {
                 </TouchableOpacity>
 
                 <FlatList
-                    style={{ backgroundColor: 'rgba(0,0,0,0.2)' }}
+                    style={{ backgroundColor: 'rgba(0,0,0,0)' }}
                     data={menuData}
                     renderItem={({ item }) => (
                         // @ts-ignore
                         <DrawerItem
+                            iconName={item.iconName}
                             navigation={navigation}
+                            onPress={item.onPress}
+                            iconSize={item.iconSize}
                             screenName={item.screenName as keyof LoginScreenProps}
                             name={item.name}
                             key={item.key}
@@ -69,58 +89,48 @@ const DrawerMenu = ({ navigation }: { navigation: any }) => {
                     )}
                 />
             </View>
-            <Button onPress={() => {
-                Alert.alert(
-                    "Are you sure you want to logout?",
-                    "You will be send the Sign in",
-                    [
-                        {
-                            text: "No",
-                            onPress: () => console.log("Cancel Pressed"),
-                            style: "cancel"
-                        },
-                        { text: "Yes", onPress: () => dispatchGlobalState({ type: 'logout' }) }
-                    ],
-                    { cancelable: false }
-                );
-            }} size="giant" style={{ borderRadius: 10, backgroundColor: '#cf1830', borderColor: '#cf1830', marginRight: '10%', marginLeft: '10%', marginBottom: '5%', marginTop: '5%' }}>
-                {() => <Text style={{ color: 'white' }}>Logout</Text>}
-            </Button>
         </>
     );
 }
 
-const DrawerItem = ({ navigation, name, screenName }: StackScreenProps<LoginScreenProps> & { name: string, screenName: keyof LoginScreenProps }) => (
-    <TouchableOpacity
-        style={styles.menuItem}
-        onPress={() =>
-            navigation.navigate(screenName)
-        }
-    >
-        <MaterialCommunityIcon style={{ marginRight: '2%', color: '#41d5fb'}} size={40} name="car-sports" />
-        <Text style={styles.menuItemText}>{name}</Text>
-    </TouchableOpacity>
-);
+const DrawerItem = ({ navigation, name, iconName,screenName,iconSize,onPress }: StackScreenProps<LoginScreenProps> & { name: string, iconSize: number,iconName: string,onPress?:() => void,screenName?: keyof LoginScreenProps }) => {
+    return (
+        <TouchableOpacity
+            style={styles.menuItem}
+            onPress={() => {
+                if (screenName) {
+                    navigation.navigate(screenName)
+                } else {
+                    onPress && onPress();
+                }
+            }}
+        >
+            <MaterialCommunityIcon style={{ marginLeft: '8%',marginRight: '4%', color: '#41d5fb', fontSize: iconSize || 25}} name={iconName} />
+            <Text style={styles.menuItemText}>{name}</Text>
+        </TouchableOpacity>
+    );
+};
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: "rgba(255,255,255,0.43)",
-        paddingTop: '20%',
+        paddingTop: '10%',
         display: 'flex',
         justifyContent: 'center'
     },
     menuItem: {
         flexDirection: "row",
         alignItems: 'center',
-        marginBottom: '15%',
-        marginTop: '5%',
-        marginLeft: '10%'
+        paddingTop: '3%',
+        paddingBottom: '3%',
+        borderBottomColor: 'gray',
+        borderBottomWidth: 0.6,
     },
     menuItemText: {
-        fontSize: 20,
+        fontSize: 18,
         fontWeight: "300",
-        color: "white"
+        color: "rgba(0,0,0,0.8)"
     },
 });
 

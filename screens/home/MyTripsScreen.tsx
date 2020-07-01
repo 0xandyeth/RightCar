@@ -46,7 +46,7 @@ const DocumentScreen = () => {
     </POS>
     <Customer>
     <Primary>
-    <Email>${profile.emailaddress}</Email>
+    <Email>${profile?.emailaddress}</Email>
     </Primary>
     </Customer>
     </OTA_OTA_VehListRQ>`,
@@ -129,8 +129,10 @@ const DocumentScreen = () => {
       const sortedBookings = parsedResponse.sort(function (left, right) {
         return moment.utc(left.pickupTime).diff(moment.utc(right.pickupTime))
       });
+      AsyncStorage.setItem('myBookings', JSON.stringify(sortedBookings))
+
       const activeTrips = sortedBookings ? sortedBookings.filter(booking => {
-        return booking.pickupTime.isBetween(moment(),moment().add('h', 24))
+        return booking.pickupTime.isBetween(moment(), moment().add('h', 24))
       }) : null
       setActiveTrips(activeTrips)
 
@@ -147,6 +149,39 @@ const DocumentScreen = () => {
       setCompletedTrips(completed)
     }, 0)
   }, [parsedResponse])
+
+  useEffect(() => {
+    try {
+      AsyncStorage.getItem('myBookings')
+        .then(jsonStringData => {
+          console.log(jsonStringData)
+          const parsedValues = JSON.parse(jsonStringData).map(i => {
+            return {
+              currencyCode: i.currencyCode,
+              image_preview_url: i.image_preview_url,
+              leftImageUri: i.leftImageUri,
+              keyLess: i.keyLess,
+              "tripDate": moment(i.tripDate),
+              "pickupLocation": i.pickupLocation,
+              "dropOffLocation": i.dropOffLocation,
+              pickupLocationPhoneNumber: i.pickupLocationPhoneNumber,
+              "pickupTime": moment(i.pickupTime),
+              "dropoffTime": moment(i.dropoffTime),
+              carName: i.carName,
+              registratioNumber: i.registratioNumber,
+              "finalCost": i.finalCost,
+              "arrivalTime": moment(i.arrivalTime),
+              pickUpInstructions: i.pickUpInstructions,
+              reservationStatus: i.reservationStatus,
+              pLocationAddress: i.pLocationAddress
+            }
+          })
+          setCompletedTrips(parsedValues)
+        })
+    } catch (error) {
+      console.log('We fail to save location data: ' + error.toString())
+    }
+  }, []);
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -188,7 +223,12 @@ const DocumentScreen = () => {
             onSelect={index => setSelectedIndex(index)}>
             <Tab style={{ paddingTop: '6%', paddingBottom: '1%' }} title={evaProps => <Text {...evaProps} style={{ fontFamily: AppFontBold, color: selectedIndex == 0 ? '#41d5fb' : '#aeb1c3' }}>ACTIVE</Text>} >
               <Layout style={{ height: '86%' }}>
-                {!loading && activeTrips && activeTrips.length !== 0 && <List
+                {loading && (
+                  <Layout style={{ display: 'flex', justifyContent: 'center', alignItems: "center" }}>
+                    <LoadingSpinner />
+                  </Layout>
+                )}
+                {activeTrips && activeTrips.length !== 0 && <List
                   style={{ backgroundColor: '#f7f9fc', padding: '5%', flexGrow: 1 }}
                   data={activeTrips}
                   renderItem={(data: any) => {
@@ -200,17 +240,18 @@ const DocumentScreen = () => {
                     );
                   }}
                 />}
-                {!loading && activeTrips && activeTrips.length == 0 && <Text style={{ textAlign: 'center', marginTop: '20%' }} category="h5">No active bookings!</Text>}
+                {!loading && activeTrips && activeTrips.length == 0 && <Text style={{ textAlign: 'center', marginTop: '20%' }} category="h5">No active bookings</Text>}
+
+              </Layout>
+            </Tab>
+            <Tab style={{ paddingTop: '6%', paddingBottom: '1%' }} title={evaProps => <Text {...evaProps} style={{ fontFamily: 'SF-UI-Display_Bold', color: selectedIndex == 1 ? '#41d5fb' : '#aeb1c3' }}>UPCOMING</Text>} >
+              <Layout style={{ height: '96%' }}>
                 {loading && (
                   <Layout style={{ display: 'flex', justifyContent: 'center', alignItems: "center" }}>
                     <LoadingSpinner />
                   </Layout>
                 )}
-              </Layout>
-            </Tab>
-            <Tab style={{ paddingTop: '6%', paddingBottom: '1%' }} title={evaProps => <Text {...evaProps} style={{ fontFamily: AppFontBold, color: selectedIndex == 1 ? '#41d5fb' : '#aeb1c3' }}>UPCOMING</Text>} >
-              <Layout style={{ height: '96%' }}>
-                {!loading && upcommingTrips && upcommingTrips.length !== 0 && <List
+                {upcommingTrips && upcommingTrips.length !== 0 && <List
                   style={{ backgroundColor: '#f7f9fc', padding: '5%', flexGrow: 1, marginBottom: 70 }}
                   data={upcommingTrips}
                   renderItem={(data: any) => {
@@ -223,19 +264,18 @@ const DocumentScreen = () => {
                   }}
                 />}
 
-                {!loading && upcommingTrips && upcommingTrips.length == 0 && <Text style={{ textAlign: 'center', marginTop: '20%' }} category="h5">No upcomming bookings!</Text>}
+                {!loading && upcommingTrips && upcommingTrips.length == 0 && <Text style={{ textAlign: 'center', marginTop: '20%' }} category="h5">No upcoming bookings</Text>}
+              </Layout>
+            </Tab>
+
+            <Tab style={{ paddingTop: '6%', paddingBottom: '1%' }} title={evaProps => <Text {...evaProps} style={{ fontFamily: 'SF-UI-Display_Bold', color: selectedIndex == 2 ? '#41d5fb' : '#aeb1c3' }}>COMPLETED</Text>} >
+              <Layout style={{ height: '96%' }}>
                 {loading && (
                   <Layout style={{ display: 'flex', justifyContent: 'center', alignItems: "center" }}>
                     <LoadingSpinner />
                   </Layout>
                 )}
-              </Layout>
-            </Tab>
-
-            <Tab style={{ paddingTop: '6%', paddingBottom: '1%' }} title={evaProps => <Text {...evaProps} style={{ fontFamily: AppFontBold, color: selectedIndex == 2 ? '#41d5fb' : '#aeb1c3' }}>COMPLETED</Text>} >
-              <Layout style={{ height: '96%' }}>
-
-                {!loading && completedTrips && completedTrips.length !== 0 && <List
+                {completedTrips && completedTrips.length !== 0 && <List
                   style={{ backgroundColor: '#f7f9fc', padding: '5%', display: 'flex', flexDirection: 'column' }}
                   data={completedTrips}
                   renderItem={(data: any) => {
@@ -248,12 +288,7 @@ const DocumentScreen = () => {
                   }}
                 />}
 
-                {!loading && completedTrips && completedTrips.length == 0 && <Text style={{ textAlign: 'center', marginTop: '20%' }} category="h5">No completed bookings!</Text>}
-                {loading && (
-                  <Layout style={{ display: 'flex', justifyContent: 'center', alignItems: "center" }}>
-                    <LoadingSpinner />
-                  </Layout>
-                )}
+                {!loading && completedTrips && completedTrips.length == 0 && <Text style={{ textAlign: 'center', marginTop: '20%' }} category="h5">No completed bookings</Text>}
               </Layout>
             </Tab>
 

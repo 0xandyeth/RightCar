@@ -9,6 +9,7 @@ import { Decimal } from 'decimal.js';
 import LoadingSpinner from '../../../partials/LoadingSpinner';
 import { VehVendorAvail, PricedEquip } from '../../../types/SearchVehicleResponse';
 import ResolveCurrencySymbol from '../../../utils/ResolveCurrencySymbol';
+import MenuButton from '../../../partials/MenuButton';
 import { AppFontBold, AppFontRegular } from '../../../constants/fonts'
 
 const GET_PAYPAL_JSON = (vehicle: VehVendorAvail, meta, extras: (PricedEquip & { amount: number })[]) => {
@@ -113,8 +114,11 @@ export default () => {
                 <Layout>
                     <Layout style={{ marginTop: '5%' }}>
                         <Layout style={{ backgroundColor: '#f0f2f3', padding: '5%', display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
-                            <Text style={{ fontSize: 24, fontFamily: AppFontBold }}>Pay now</Text>
-                            <Text style={{ fontSize: 24, fontFamily: AppFontBold }}>
+                            <View style={{ display: 'flex', flexDirection: 'row'}}>
+                                <MenuButton />
+                                <Text style={{ marginLeft: '5%',fontSize: 24, fontFamily: AppFontBold}}>Pay now</Text>
+                            </View>
+                            <Text style={{ fontSize: 24, fontFamily: AppFontBold }}>                           
                                 {ResolveCurrencySymbol(paypalJson.transactions[0].amount.currency)}{' '}
                                 {new Decimal(paypalJson.transactions[0].amount.total).toFixed(2)}
                             </Text>
