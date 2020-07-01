@@ -36,14 +36,12 @@ export type TripCardProps = {
 const CarTripInfoCard: React.FC<TripCardProps> = (props) => {
   const navigation = useNavigation();
 
-  const [{ data, loading, error }] = useAxios({
-    url: `https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=${props.pickupLocation} ${props.pickupCountry}&destinations=${props.dropOffLocation} ${props.dropoffCountry}&key=AIzaSyBJ8evu2aDcSyb2F2NIuNQ3L5TeLAGpino`
-  })
-
   return (
     <Layout style={{ backgroundColor: '#00000000', marginBottom: '5%' }}>
       <Layout style={{ backgroundColor: '#00000000', display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end' }}>
-        <Text style={{ marginBottom: '3%', color: '#ACB1C0' }}>{props.pickupTime.format('LLL')}</Text>
+        <Text style={{ textAlign: 'center',marginBottom: '3%', color: '#ACB1C0', width: '100%' }}>
+          {props.pickupTime.format('DD MMM, HH:mm')}
+        </Text>
         {props.leftImageUri && (
           <Image
             style={{ width: 50, height: 50 }}
@@ -107,7 +105,10 @@ const CarTripInfoCard: React.FC<TripCardProps> = (props) => {
               </Layout>
               <Layout style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <Text style={{ color: '#ACB1C0', fontSize: 13 }}>Final cost</Text>
-                <Text style={{ fontSize: 15, fontFamily: 'SF-UI-Display_Bold' }}>{new Decimal(props.finalCost || 0).toFixed(2)}{ResolveCurrencySymbol(props.currencyCode)}</Text>
+                <Text style={{ fontSize: 15, fontFamily: 'SF-UI-Display_Bold' }}>
+                  {ResolveCurrencySymbol(props.currencyCode)}
+                  {new Decimal(props.finalCost || 0).toFixed(2)}
+                </Text>
               </Layout>
             </Layout>
 

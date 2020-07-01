@@ -8,6 +8,7 @@ import { TextInput, TouchableHighlight, TouchableWithoutFeedback, AsyncStorage, 
 import Autocomplete from 'react-native-autocomplete-input';
 import FuzzySearch from 'fuzzy-search';
 import { GrcgdsLocation } from '../types';
+import MenuButton from './MenuButton';
 
 export type LocationSearchInputProps = {
   pickupLocation?: { [k: string]: any } | null
@@ -43,15 +44,16 @@ const LocationSearchInput: React.FC<LocationSearchInputProps> = (props) => {
   return (
     <>
       <Layout style={{ display: 'flex', flexDirection: 'row' }}>
+        <MenuButton />
 
         {returnSameLocation && (
-          <Layout style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly' }}>
+          <Layout style={{ marginLeft: '2%',display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly' }}>
             <FontAwesomeIcon size={15} style={{ color: '#41d5fb' }} name="circle" />
           </Layout>
         )}
 
         {!returnSameLocation && (
-          <Layout style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly' }}>
+          <Layout style={{ marginLeft: '2%',display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly' }}>
             <FontAwesomeIcon size={15} style={{ color: '#41d5fb' }} name="circle" />
             <Layout style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-between' }}>
               <MaterialCommunityIcon style={{ marginBottom: '5%' }} size={4} name="rectangle" />
@@ -63,7 +65,7 @@ const LocationSearchInput: React.FC<LocationSearchInputProps> = (props) => {
             <FontAwesomeIcon size={15} name="square" />
           </Layout>
         )}
-        <Layout style={{ display: 'flex', flexDirection: 'column', width: '96%', marginLeft: '2%' }}>
+        <Layout style={{ display: 'flex', flexDirection: 'column', width: '85%', marginLeft: '1%' }}>
           <Autocomplete
             style={{ fontFamily: 'SF-UI-Display_Bold', fontSize: 16, width: '100%', borderColor: 'white', borderBottomColor: '#E4E9F2', borderBottomWidth: 1 }}
             containerStyle={{ width: '100%' }}

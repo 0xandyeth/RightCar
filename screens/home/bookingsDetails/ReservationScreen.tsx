@@ -15,6 +15,7 @@ import CompletedReportScreen from './CompletedReportScreen';
 import AgreementScreen from './AgreementScreen';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useCarDetailState } from './detailsState';
+import MenuButton from '../../../partials/MenuButton';
 
 const DocumentScreen = () => {
   const route = useRoute();
@@ -24,34 +25,39 @@ const DocumentScreen = () => {
       <ScrollView contentContainerStyle={{ backgroundColor: 'white', flexGrow: 1 }}>
         <View style={{ paddingTop: '5%', height: '90%', paddingLeft: '5%', paddingRight: '5%', display: 'flex', flexDirection: 'column' }}>
           <View style={{ width: '100%' }}>
-            <Layout style={{ display: 'flex', alignItems: 'center' }}>
-              <Text style={{ textAlign: 'center' }} category="h6">
-                CONFIRMATION
+            <Layout style={{ display: 'flex', alignItems: 'center', flexDirection: 'row' }}>
+              <View style={{ position: 'absolute',height: '100%', display: 'flex', alignItems: 'center' }}>
+                <MenuButton />
+              </View>
+              <View style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                <Text style={{ textAlign: 'center' }} category="h5">
+                  CONFIRMATION
               </Text>
-              <Text style={{ lineHeight: 20, textAlign: 'center', fontFamily: 'SF-UI-Display_Bold', fontSize: 18 }} >
-                {route.params.registratioNumber}{' '}
-              </Text>
-              <Image
-                style={{ width: 200, height: 200, resizeMode: 'contain' }}
-                source={{ uri: route.params.image_preview_url }}
-              />
+                <Text style={{ lineHeight: 20, textAlign: 'center', fontFamily: 'SF-UI-Display_Bold', fontSize: 22 }} >
+                  {route.params.registratioNumber}{' '}
+                </Text>
+                <Image
+                  style={{ width: 200, height: 200, resizeMode: 'contain' }}
+                  source={{ uri: route.params.image_preview_url }}
+                />
+              </View>
             </Layout>
 
             <View style={{ flexDirection: 'row', display: 'flex', justifyContent: 'space-around' }}>
               <Layout style={{ marginBottom: '3%' }}>
-                <Text style={{ textAlign: 'center', color: 'grey', fontFamily: 'SF-UI-Display_Bold' }} category="c2">
+                <Text style={{ textAlign: 'center', color: 'grey', fontFamily: 'SF-UI-Display_Bold' }} category="s1">
                   Pickup Location
                   </Text>
-                <Text style={{ textAlign: 'center', fontFamily: 'SF-UI-Display', fontSize: 14 }}>
+                <Text style={{ textAlign: 'center', fontFamily: 'SF-UI-Display', fontSize: 16 }}>
                   {route.params.pickupLocation}
                 </Text>
               </Layout>
 
               <Layout style={{ marginBottom: '3%' }}>
-                <Text style={{ textAlign: 'center', color: 'grey', fontFamily: 'SF-UI-Display_Bold' }} category="c2">
+                <Text style={{ textAlign: 'center', color: 'grey', fontFamily: 'SF-UI-Display_Bold' }} category="s1">
                   Dropout Location
               </Text>
-                <Text style={{ textAlign: 'center', fontFamily: 'SF-UI-Display', fontSize: 14 }}>
+                <Text style={{ textAlign: 'center', fontFamily: 'SF-UI-Display', fontSize: 16 }}>
                   {route.params.dropOffLocation}
                 </Text>
               </Layout>
@@ -59,19 +65,19 @@ const DocumentScreen = () => {
 
             <View style={{ flexDirection: 'row', display: 'flex', justifyContent: 'space-around' }}>
               <Layout style={{ marginBottom: '3%' }}>
-                <Text style={{ textAlign: 'center', color: 'grey', fontFamily: 'SF-UI-Display_Bold' }} category="c2">
+                <Text style={{ textAlign: 'center', color: 'grey', fontFamily: 'SF-UI-Display_Bold' }} category="s1">
                   Pickup Time
                   </Text>
-                <Text style={{ textAlign: 'center', fontFamily: 'SF-UI-Display', fontSize: 14 }}>
+                <Text style={{ textAlign: 'center', fontFamily: 'SF-UI-Display', fontSize: 16 }}>
                   {route.params.pickupTime.format('HH:mm')}
                 </Text>
               </Layout>
 
               <Layout style={{ marginBottom: '3%' }}>
-                <Text style={{ textAlign: 'center', color: 'grey', fontFamily: 'SF-UI-Display_Bold' }} category="c2">
+                <Text style={{ textAlign: 'center', color: 'grey', fontFamily: 'SF-UI-Display_Bold' }} category="s1">
                   Dropout Time
               </Text>
-                <Text style={{ textAlign: 'center', fontFamily: 'SF-UI-Display', fontSize: 14 }}>
+                <Text style={{ textAlign: 'center', fontFamily: 'SF-UI-Display', fontSize: 16 }}>
                   {route.params.dropoffTime.format('HH:mm')}
                 </Text>
               </Layout>
@@ -79,20 +85,20 @@ const DocumentScreen = () => {
 
 
             <Layout style={{ marginBottom: '3%' }}>
-              <Text style={{ textAlign: 'center', color: 'grey', fontFamily: 'SF-UI-Display_Bold' }} category="c2">
+              <Text style={{ textAlign: 'center', color: 'grey', fontFamily: 'SF-UI-Display_Bold' }} category="s1">
                 Final Cost
               </Text>
-              <Text style={{ textAlign: 'center', fontFamily: 'SF-UI-Display', fontSize: 14 }}>
+              <Text style={{ textAlign: 'center', fontFamily: 'SF-UI-Display', fontSize: 16 }}>
                 {route.params.finalCost}
                 {ResolveCurrencySymbol(route.params.currencyCode)}
               </Text>
             </Layout>
 
             <Layout style={{ width: '75%', marginLeft: 'auto', marginRight: 'auto' }}>
-              <Text style={{ textAlign: 'center', color: 'grey', fontFamily: 'SF-UI-Display_Bold' }} category="c2">
+              <Text style={{ textAlign: 'center', color: 'grey', fontFamily: 'SF-UI-Display_Bold' }} category="s1">
                 Pickup Instructions
               </Text>
-              <Text style={{ textAlign: 'center', fontFamily: 'SF-UI-Display', fontSize: 16 }}>
+              <Text style={{ textAlign: 'center', fontFamily: 'SF-UI-Display', fontSize: 18 }}>
                 {route.params.pickUpInstructions}
               </Text>
             </Layout>

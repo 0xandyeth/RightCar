@@ -7,6 +7,7 @@ import SignatureCapture from 'react-native-signature-capture';
 import { TouchableOpacity, TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { useFocusEffect, useRoute } from '@react-navigation/native';
 import { useGlobalState } from '../../../state';
+import MenuButton from '../../../partials/MenuButton';
 
 
 const DocumentScreen = ({ navigation }) => {
@@ -51,6 +52,9 @@ const DocumentScreen = ({ navigation }) => {
                 {isClean && <View style={{ position: 'absolute', width: '100%',top: '50%' }}>
                     <Text style={{ fontSize: 48,textAlign: 'center', color: 'rgba(0,0,0,0.2)'}}>Please sign here</Text>
                 </View>}
+                <View style={{ position: 'absolute', top: '5%', left: '5%', zIndex: 4 }}>
+                    <MenuButton />
+                </View>
                 <View style={{ position: 'absolute', top: '85%', left: '5%', zIndex: 4 }}>
                     <TouchableWithoutFeedback onPress={() => {
                         signRef.current?.resetImage();
@@ -65,12 +69,14 @@ const DocumentScreen = ({ navigation }) => {
             <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
                 <Text style={{ marginLeft: '5%', fontSize: 18 }}>Signed by: {profile.firstname}{' '}{profile.lastname}</Text>
                 <Button
+                    disabled={isClean}
                     onPress={() => {
+                        if (isClean) return
                         signRef.current?.saveImage()
                     }}
                     style={{
-                        backgroundColor: '#41d5fb',
-                        borderColor: '#41d5fb',
+                        backgroundColor: isClean == false ? '#41d5fb' : '#e4e9f2',
+                        borderColor: isClean == false ? '#41d5fb' : '#e4e9f2',
                     }}>Confirm</Button>
             </View>
         </SafeAreaView>

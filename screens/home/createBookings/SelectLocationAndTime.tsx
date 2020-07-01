@@ -23,13 +23,18 @@ export default () => {
     const [inmediatePickup, setInmediatePickup] = useCreateBookingState("inmediatePickup");
     const [departureTime, setDepartureTime] = useCreateBookingState("departureTime");
     const [returnTime, setReturnTime] = useCreateBookingState("returnTime");
-    const [result, setResults] = useState(null);
-    const [searchingFor, setSearchingFor] = useState("ORIGIN");
 
     const [{ data, loading, error }, doSearch] = useAxios<VehicleResponse>({
         url: `${GRCGDS_BACKEND}/SEARCH_VEHICLE`,
-        method: 'GET'
+        method: 'GET',
+        validateStatus: () => true
     }, { manual: true })
+
+    useEffect(() => {
+        if (inmediatePickup == true) {
+            setDepartureTime(moment().toDate())
+        }
+    }, [inmediatePickup])
 
     return (
         <SafeAreaView style={{ flex: 1 }} >
@@ -45,12 +50,12 @@ export default () => {
                         }}
                         onReturnLocationSelected={(l) => setReturnLocation(l)}
                     />
-                    
+
                     <TimeCheckbox
                         checked={inmediatePickup == undefined ? undefined : inmediatePickup}
                         style={{ marginBottom: '5%' }}
-                        title="IMMEDIATE PICK-UP"
-                        subTitle="Get a ride in a minute"
+                        title="IMMEDIATE PICKUP"
+                        subTitle="Collect A Car Near Me Immediately"
                         onChange={(v) => setInmediatePickup(p => {
                             if (p === null) return true
                             return !p
@@ -58,8 +63,7 @@ export default () => {
                     />
                     <TimeCheckbox
                         checked={inmediatePickup == undefined ? undefined : !inmediatePickup}
-                        title="SCHEDULE RIDE"
-                        subTitle="Schedule pickup in advance"
+                        title="SCHEDULE A PICKUP IN ADVANCE"
                         onChange={(v) => {
                             setInmediatePickup(p => {
                                 if (p === null) return false
@@ -67,22 +71,31 @@ export default () => {
                             })
                         }}
                     />
-                    {inmediatePickup === false && (
+                    {inmediatePickup !== null && (
                         <>
-                            <DatePicker
-                                minuteInterval={30}
-                                date={departureTime}
-                                onDateChange={(d) => {
+                        <DatePicker
+                            minuteInterval={30}
+                            date={departureTime}
+                            onDateChange={(d) => {
+                                if (inmediatePickup) {
+                                    const nowPlus24Hours = moment().utc().add('h', 24).set({ minutes: 0, seconds: 0 })
+                                    if (moment(d).isAfter(nowPlus24Hours)) {
+                                        setDepartureTime(nowPlus24Hours.toDate())
+                                    } else {
+                                        setDepartureTime(d)
+                                    }
+                                } else {
                                     setDepartureTime(d)
-                                    setReturnTime(moment(d).add('days', 1).toDate())
-                                }}
-                            />
-                            <Text style={{ fontFamily: 'SF-UI-Display_Bold' }}>Return Time</Text>
-                            <DatePicker
-                                minuteInterval={30}
-                                date={returnTime}
-                                onDateChange={(d) => setReturnTime(d)}
-                            />
+                                }
+                                setReturnTime(moment(d).add('days', 1).toDate())
+                            }}
+                        />
+                        <Text style={{ fontFamily: 'SF-UI-Display_Bold' }}>Return Time</Text>
+                        <DatePicker
+                            minuteInterval={30}
+                            date={returnTime}
+                            onDateChange={(d) => setReturnTime(d)}
+                        />
                         </>
                     )}
                 </Layout>
@@ -108,23 +121,30 @@ export default () => {
                                 }
                             })
                                 .then(res => {
-                                    navigation.navigate(
-                                        'CarsList',
-                                        {
-                                            cars: res.data.VehAvailRSCore.VehVendorAvails,
-                                            metadata: res.data.VehAvailRSCore.VehRentalCore,
-                                            searchParams: {
-                                                pickUpDate: moment(departureTime),
-                                                pickUpTime: moment(departureTime),
+                                    if (res.data.VehAvailRSCore.VehVendorAvails.length == 0) {
+                                        navigation.navigate("NoResult");
+                                    } else {
+                                        navigation.navigate(
+                                            'CarsList',
+                                            {
+                                                cars: res.data.VehAvailRSCore.VehVendorAvails,
+                                                metadata: res.data.VehAvailRSCore.VehRentalCore,
+                                                searchParams: {
+                                                    pickUpDate: moment(departureTime),
+                                                    pickUpTime: moment(departureTime),
 
-                                                dropOffDate: moment(returnTime),
-                                                dropOffTime: moment(returnTime),
+                                                    dropOffDate: moment(returnTime),
+                                                    dropOffTime: moment(returnTime),
 
-                                                pickUpLocation: originLocation,
-                                                dropOffLocation: returnLocation ? returnLocation : originLocation,
+                                                    pickUpLocation: originLocation,
+                                                    dropOffLocation: returnLocation ? returnLocation : originLocation,
+                                                }
                                             }
-                                        }
-                                    );
+                                        );
+                                    }
+                                })
+                                .catch(() => {
+                                    navigation.navigate("NoResult");
                                 })
                         }} size="giant" style={{
                             borderRadius: 10,

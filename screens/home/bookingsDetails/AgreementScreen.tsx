@@ -1,26 +1,18 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Layout, Text, Button, Input } from '@ui-kitten/components';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { SafeAreaView, ScrollView, Image, TextInput, View } from 'react-native';
-import Orientation from 'react-native-orientation-locker';
-import SignatureCapture from 'react-native-signature-capture';
-import { TouchableOpacity, TouchableWithoutFeedback } from 'react-native-gesture-handler';
-import { useFocusEffect } from '@react-navigation/native';
-import BackButton from '../../../partials/BackButton';
+import MenuButton from '../../../partials/MenuButton';
 
-
-const DocumentScreen = ({ navigation }) => {
-    const signRef = useRef<TextInput | null>(null);
-
+const DocumentScreen = ({ navigation, route }) => {
     return (
         <SafeAreaView style={{ flex: 1 }}>
             <ScrollView keyboardShouldPersistTaps={"handled"} contentContainerStyle={{ flexGrow: 1}} >
 
 
             <Layout style={{ flex: 1, padding: '5%', backgroundColor: 'white' }}>
+                <MenuButton />
 
-
-                <Layout style={{ display: 'flex', flexDirection: 'column', backgroundColor: '#00000000', marginTop: '15%', marginBottom: '10%' }}>
+                <Layout style={{ display: 'flex', flexDirection: 'column', backgroundColor: '#00000000', marginTop: '10%', marginBottom: '10%' }}>
                     <Text style={{ marginBottom: '10%', textAlign: 'center' }} category="h3">
                         Sign our agreement
           </Text>
@@ -33,7 +25,7 @@ const DocumentScreen = ({ navigation }) => {
 
                 <Button
                     onPress={() => {
-                        navigation.navigate('Sign');
+                        navigation.navigate('Sign', { pictures: route.params.pictures });
                     }}
                     size="giant"
                     style={{

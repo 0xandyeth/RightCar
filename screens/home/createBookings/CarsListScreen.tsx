@@ -242,7 +242,7 @@ const DocumentScreen = () => {
         }}>
         <Layout style={{ height: '100%', padding: '3%' }}>
           <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
-            <Text style={{ marginBottom: '6%' }} category="h3">Sort By</Text>
+            <Text style={{ marginBottom: '6%' }} category="h5">Sort By</Text>
             <Text onPress={() => setShowSortModal(false)} style={{ fontFamily: 'SF-UI-Display_Bold' }} category="h3">X</Text>
           </View>
           <TouchableOpacity onPress={() => {
@@ -250,8 +250,8 @@ const DocumentScreen = () => {
             setSortState("LowToHigh")
           }}>
             <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
-              <Text style={{ fontSize: 22, color: '#33adcc', fontFamily: "SF-UI-Display_Bold", marginBottom: '5%' }}>
-                Price Low To Hight
+              <Text style={{ fontSize: 18, color: '#33adcc', fontFamily: "SF-UI-Display_Bold", marginBottom: '5%' }}>
+                Price Low To High
             </Text>
               {sortState == "LowToHigh" && <MaterialCommunityIcons style={{ alignSelf: 'flex-start', color: '#41d5fb' }} name={"check"} size={24} />}
             </View>
@@ -261,7 +261,7 @@ const DocumentScreen = () => {
             setSortState("HighToLow")
           }}>
             <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
-              <Text style={{ fontSize: 22, color: '#33adcc', fontFamily: "SF-UI-Display_Bold", marginBottom: '5%' }}>
+              <Text style={{ fontSize: 18, color: '#33adcc', fontFamily: "SF-UI-Display_Bold", marginBottom: '5%' }}>
                 Price High to Low
             </Text>
               {sortState == "HighToLow" && <MaterialCommunityIcons style={{ alignSelf: 'flex-start', color: '#41d5fb' }} name={"check"} size={24} />}
@@ -279,11 +279,11 @@ const DocumentScreen = () => {
         }}>
         <Layout style={{ height: '100%', padding: '3%' }}>
           <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
-            <Text style={{ marginBottom: '6%' }} category="h3">Filter By</Text>
+            <Text style={{ marginBottom: '4%' }} category="h5">Filter By</Text>
             <Text onPress={() => setShowFilterModal(false)} style={{ fontFamily: 'SF-UI-Display_Bold' }} category="h3">X</Text>
           </View>
           <ScrollView>
-            <Text style={{ fontSize: 24, color: '#33adcc', fontFamily: "SF-UI-Display_Bold", marginBottom: '5%' }}>Transmission</Text>
+            <Text style={{ fontSize: 18, color: '#33adcc', fontFamily: "SF-UI-Display_Bold", marginBottom: '3%' }}>Transmission</Text>
             {carTransmissionOptions.map(i => {
               return (
                 <Card
@@ -315,7 +315,7 @@ const DocumentScreen = () => {
               );
             })}
 
-            <Text style={{ fontSize: 24, color: '#33adcc', fontFamily: "SF-UI-Display_Bold", marginBottom: '5%' }}>Car Type</Text>
+            <Text style={{ fontSize: 18, color: '#33adcc', fontFamily: "SF-UI-Display_Bold", marginBottom: '3%' }}>Car Type</Text>
             {carTypeOptions.map(i => {
               return (
                 <Card
@@ -343,30 +343,6 @@ const DocumentScreen = () => {
                     </Text>
                     {typesFiter.includes(i) && <MaterialCommunityIcons style={{ marginLeft: '2%', color: '#41d5fb' }} name={"check"} size={24} />}
                   </View>
-                </Card>
-              );
-            })}
-
-            <Text style={{ fontSize: 24, color: '#41d5fb', fontFamily: "SF-UI-Display" }}>Car Class</Text>
-            {carClassOptions.map(i => {
-              return (
-                <Card
-                  onPress={() => {
-                    setShowSortModal(false)
-                    setSortState("LowToHigh")
-                  }}
-                  style={{
-                    marginBottom: '4%',
-                    shadowColor: '#000',
-                    shadowOffset: { width: 0, height: 1 },
-                    shadowOpacity: 0.5,
-                    shadowRadius: 3,
-                    elevation: 2,
-                  }}>
-
-                  <Text style={{ color: '#41d5fb', fontFamily: "SF-UI-Display" }} category="h5">
-                    {i}
-                  </Text>
                 </Card>
               );
             })}
