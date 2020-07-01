@@ -4,6 +4,7 @@ import { SafeAreaView, ScrollView, Image, TextInput, View } from 'react-native';
 import ImagePicker from 'react-native-image-picker';
 import TripCard from '../../partials/TripCard';
 import { useRoute, useNavigation } from '@react-navigation/native';
+import { AppFontBold, AppFontRegular } from '../../constants/fonts'
 
 const DocumentScreen = () => {
   const route = useRoute();
@@ -33,7 +34,7 @@ const DocumentScreen = () => {
               />
             )}
             {submitted == true && (
-              <Text style={{ textAlign: 'center', fontFamily: 'SF-UI-Display_Bold'}} category="h5">The problem with the vehicle have been recorded and the local branch will make arragementsas required</Text>
+              <Text style={{ textAlign: 'center', fontFamily: AppFontBold}} category="h5">The problem with the vehicle have been recorded and the local branch will make arragementsas required</Text>
             )}
           </Layout>
 

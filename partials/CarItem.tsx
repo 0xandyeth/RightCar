@@ -7,6 +7,7 @@ import ResolveTransmission from '../utils/ResolveTransmission';
 import ResolveCurrencySymbol from '../utils/ResolveCurrencySymbol';
 import GetCategoryByAcrissCode from '../utils/GetCategoryByAcrissCode';
 import { VehVendorAvail } from '../types/SearchVehicleResponse';
+import { AppFontBold, AppFontRegular } from '../constants/fonts'
 
 const hightLightStyles = {
     backgroundColor: '#41d5fb',
@@ -39,6 +40,12 @@ const CarItem: React.FC<Props> = ({ vehicle, isActive, onClick, style: customeSt
                         <Layout style={{ width: '70%', display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: '#00000000' }}>
                             <Image source={{ uri: vehicle.Vehicle.VehMakeModel.PictureURL }} style={{ flex: 1, width: 160, height: 160, resizeMode: 'contain' }} />
                         </Layout>
+                    )}
+                    {vehicle.Vehicle.AirConditionInd && (
+                        <Layout style={{ display: 'flex', flexDirection: 'row', marginBottom: '4%', backgroundColor: 'rgba(0,0,0,0)' }}>
+                            <Image source={require('../image/AC.png')} style={{ width: 20, height: 20 }} />
+                            <Text>Air Conditioning</Text>
+                        </Layout>
 
                         <Layout style={{ width: '90%', marginLeft: '10%', display: 'flex', flexDirection: 'column', backgroundColor: '#00000000' }}>
                             <Layout style={{ display: 'flex', flexDirection: 'row', marginBottom: '4%', backgroundColor: 'rgba(0,0,0,0)' }}>
@@ -65,6 +72,8 @@ const CarItem: React.FC<Props> = ({ vehicle, isActive, onClick, style: customeSt
                                 </Layout>
                             )}
                         </Layout>
+                    )}
+                </Layout>
 
                     </Layout>
                     <Layout style={{ backgroundColor: '#00000000' }}>
@@ -80,16 +89,16 @@ const CarItem: React.FC<Props> = ({ vehicle, isActive, onClick, style: customeSt
                             <Text style={{ fontSize: 13, fontFamily: 'SF-UI-Display_Bold' }}>Mileage:{' '}</Text>
                             <Text style={{ fontSize: 13 }}>Unlimited</Text>
                         </View>
-                    </Layout>
+                    </Layout >
 
-                </Layout>
-                <Layout style={{ display: 'flex', flexDirection: 'row', backgroundColor: '#00000000', marginLeft: 'auto' }}>
-                    <Text style={{ fontFamily: 'SF-UI-Display_Bold', color: currentStyles.priceColor, fontSize: 18 }}>{ResolveCurrencySymbol(vehicle.TotalCharge.CurrencyCode || '')} </Text>
-                    <Text style={{ fontFamily: 'SF-UI-Display_Bold', color: currentStyles.priceColor, fontSize: 18 }}>{vehicle.TotalCharge.RateTotalAmount}</Text>
-                </Layout>
+                </Layout >
+    <Layout style={{ display: 'flex', flexDirection: 'row', backgroundColor: '#00000000', marginLeft: 'auto' }}>
 
-            </Layout>
-        </TouchableWithoutFeedback>
+    <Text style={{ fontFamily: AppFontBold, color: currentStyles.priceColor, fontSize: 18 }}> { vehicle.TotalCharge.RateTotalAmount }</Text >
+                </Layout >
+
+            </Layout >
+        </TouchableWithoutFeedback >
     );
 }
 

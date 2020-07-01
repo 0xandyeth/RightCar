@@ -4,6 +4,7 @@
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
 #import "RNSplashScreen.h"  // here
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 
 #if DEBUG
 #import <FlipperKit/FlipperClient.h>
@@ -25,9 +26,31 @@ static void InitializeFlipper(UIApplication *application) {
 #endif
 
 @implementation AppDelegate
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+            options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+
+  BOOL handled =  [[FBSDKApplicationDelegate sharedInstance] application:application openURL:url options:options];
+  // Add any custom logic here.
+  return handled;
+}
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+  [FBSDKAppEvents activateApp];
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+  [[FBSDKApplicationDelegate sharedInstance] application:application
+      didFinishLaunchingWithOptions:launchOptions];
+  //  New adding fonts script
+  for (NSString* family in [UIFont familyNames])
+  {
+    NSLog(@"%@", family);
+    for (NSString* name in [UIFont fontNamesForFamilyName: family])
+    {
+      NSLog(@" %@", name);
+    }
+  }
 #if DEBUG
   InitializeFlipper(application);
 #endif

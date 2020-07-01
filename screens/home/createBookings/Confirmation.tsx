@@ -9,8 +9,8 @@ import moment from 'moment';
 import TripCard from '../../../partials/TripCard';
 import ResolveCurrencySymbol from '../../../utils/ResolveCurrencySymbol';
 import CarTripInfoCard from '../../../partials/CarTripInfoCard';
+import { AppFontBold, AppFontRegular } from '../../../constants/fonts'
 import MenuButton from '../../../partials/MenuButton';
-
 
 export default () => {
     const navigation = useNavigation();
@@ -86,7 +86,7 @@ export default () => {
                                 paddingRight: 20,
                                 marginBottom: '2%'
                             }}>
-                            {() => <Text style={{ color: 'white', fontFamily: 'SF-UI-Display_Bold', fontSize: 18 }}>Go My Trips</Text>}
+                            {() => <Text style={{ color: 'white', fontFamily: AppFontBold, fontSize: 18 }}>Go My Trips</Text>}
                         </Button>
                     </Layout>
                 </Layout>

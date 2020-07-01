@@ -9,6 +9,7 @@ import Geolocation from '@react-native-community/geolocation';
 import MenuButton from '../../partials/MenuButton';
 import LocationIconComponent from '../../image/LocationIconComponent';
 import { useNavigation, useRoute, StackActions, CommonActions, useFocusEffect } from '@react-navigation/native';
+import { AppFontBold, AppFontRegular } from '../../constants/fonts'
 
 const DocumentScreen = () => {
   const navigation = useNavigation();
@@ -34,7 +35,7 @@ const DocumentScreen = () => {
             name: route.params.passTo,
             params: route.params.parentProps,
           })
-  
+
           return CommonActions.reset({
             ...state,
             routes,
@@ -42,7 +43,7 @@ const DocumentScreen = () => {
           });
         });
       }
-  
+
       GPSState.addListener((status: any) => {
         switch (status) {
           case GPSState.NOT_DETERMINED:
@@ -50,20 +51,20 @@ const DocumentScreen = () => {
             //TODO: handle case when user does not authorize login
             Alert.alert(':(','Please, allow the location, for us to do amazing things for you!')
             break;
-  
+
           case GPSState.RESTRICTED:
             setIsLocationGprsAuthorized(false)
             GPSState.openLocationSettings()
             navigation.goBack()
             break;
-  
+
           case GPSState.DENIED:
             setIsLocationGprsAuthorized(false)
             //TODO: handle case when user does not authorize login
             Alert.alert(':(','It`s a shame that you do not allowed us to use location :(')
             navigation.goBack()
             break;
-  
+
           case GPSState.AUTHORIZED_ALWAYS:
             console.log('GPSState.AUTHORIZED_ALWAYS')
             setIsLocationGprsAuthorized(true)
@@ -75,7 +76,7 @@ const DocumentScreen = () => {
                 name: route.params.passTo,
                 params: route.params.parentProps,
               })
-  
+
               return CommonActions.reset({
                 ...state,
                 routes,
@@ -83,7 +84,7 @@ const DocumentScreen = () => {
               });
             });
             break;
-  
+
           case GPSState.AUTHORIZED_WHENINUSE:
             console.log('GPSState.AUTHORIZED_WHENINUSE')
             setIsLocationGprsAuthorized(true)
@@ -95,7 +96,7 @@ const DocumentScreen = () => {
                 name: route.params.passTo,
                 params: route.params.parentProps,
               })
-  
+
               return CommonActions.reset({
                 ...state,
                 routes,
@@ -119,7 +120,7 @@ const DocumentScreen = () => {
             <Text style={{ textAlign: 'center' }} category="h4">You have authorized the use of Geolocation</Text>
             :
             <>
-              <Text style={{ textAlign: 'center', fontSize: 24, fontFamily: 'SF-UI-Display_Bold' }} category="h4">Enable Location</Text>
+              <Text style={{ textAlign: 'center', fontSize: 24, fontFamily: AppFontBold }} category="h4">Enable Location</Text>
               <Layout style={{ width: '70%' }}>
                 <Text style={{ textAlign: 'center', fontSize: 13, color: '#8F9BB3', marginBottom: '15%' }}>Choose your location to start find the request around you.</Text>
               </Layout>
@@ -141,7 +142,7 @@ const DocumentScreen = () => {
                   elevation: 10,
                 }}>
 
-                {() => <Text style={{ color: 'white', fontSize: 18, fontFamily: 'SF-UI-Display_Bold', textAlign: 'center', width: '100%' }}>Allow access</Text>}
+                {() => <Text style={{ color: 'white', fontSize: 18, fontFamily: AppFontBold, textAlign: 'center', width: '100%' }}>Allow access</Text>}
               </Button>
             </>
           }

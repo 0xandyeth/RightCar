@@ -8,6 +8,7 @@ import { GRCGDS_BACKEND } from 'react-native-dotenv';
 import LoadingSpinner from '../partials/LoadingSpinner';
 import { useNavigation } from '@react-navigation/native';
 import BackButton from '../partials/BackButton';
+import { AppFontBold, AppFontRegular } from '../constants/fonts'
 
 const DocumentScreen = () => {
   const [profile] = useGlobalState('profile');
@@ -79,7 +80,7 @@ const DocumentScreen = () => {
             shadowRadius: 13.16,
             elevation: 10,
           }}>
-          {() => <Text style={{ color: 'white', fontFamily: 'SF-UI-Display_Bold', fontSize: 18 }}>Resend Email</Text>}
+          {() => <Text style={{ color: 'white', fontFamily: AppFontBold, fontSize: 18 }}>Resend Email</Text>}
         </Button>
 
       </Layout>

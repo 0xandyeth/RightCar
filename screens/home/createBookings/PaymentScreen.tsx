@@ -10,6 +10,7 @@ import LoadingSpinner from '../../../partials/LoadingSpinner';
 import { VehVendorAvail, PricedEquip } from '../../../types/SearchVehicleResponse';
 import ResolveCurrencySymbol from '../../../utils/ResolveCurrencySymbol';
 import MenuButton from '../../../partials/MenuButton';
+import { AppFontBold, AppFontRegular } from '../../../constants/fonts'
 
 const GET_PAYPAL_JSON = (vehicle: VehVendorAvail, meta, extras: (PricedEquip & { amount: number })[]) => {
     const items = extras.map(i => {
@@ -115,9 +116,9 @@ export default () => {
                         <Layout style={{ backgroundColor: '#f0f2f3', padding: '5%', display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                             <View style={{ display: 'flex', flexDirection: 'row'}}>
                                 <MenuButton />
-                                <Text style={{ marginLeft: '5%',fontSize: 24, fontFamily: 'SF-UI-Display_Bold' }}>Pay now</Text>
+                                <Text style={{ marginLeft: '5%',fontSize: 24, fontFamily: AppFontBold}}>Pay now</Text>
                             </View>
-                            <Text style={{ fontSize: 24, fontFamily: 'SF-UI-Display_Bold' }}>
+                            <Text style={{ fontSize: 24, fontFamily: AppFontBold }}>                           
                                 {ResolveCurrencySymbol(paypalJson.transactions[0].amount.currency)}{' '}
                                 {new Decimal(paypalJson.transactions[0].amount.total).toFixed(2)}
                             </Text>
@@ -127,7 +128,7 @@ export default () => {
                                 indicatorStyle={{ backgroundColor: '#41d5fb' }}
                                 selectedIndex={selectedIndex}
                                 onSelect={index => setSelectedIndex(index)}>
-                                <Tab style={{ paddingTop: '4%', paddingBottom: '1%' }} title={evaProps => <Text {...evaProps} style={{ fontSize: 18,fontFamily: 'SF-UI-Display_Bold', color: selectedIndex == 0 ? '#41d5fb' : '#aeb1c3' }}>Paypal</Text>} >
+                                <Tab style={{ paddingTop: '4%', paddingBottom: '1%' }} title={evaProps => <Text {...evaProps} style={{ fontSize: 18,fontFamily: AppFontBold, color: selectedIndex == 0 ? '#41d5fb' : '#aeb1c3' }}>Paypal</Text>} >
                                     <View style={{ paddingTop: '10%', display: 'flex', alignItems: 'center' }}>
                                         <Image source={require('../../../image/paypal_logo.png')} />
                                         <Text style={{ fontSize: 20, textAlign: 'center', fontFamily: 'SF-UI-Display' }}>
@@ -196,7 +197,7 @@ export default () => {
                                     paddingRight: 20,
                                     marginBottom: '2%'
                                 }}>
-                                {() => <Text style={{ color: loading ? "#ACB1C0" : 'white', fontFamily: 'SF-UI-Display_Bold', fontSize: 18 }}>Book Now</Text>}
+                                {() => <Text style={{ color: loading ? "#ACB1C0" : 'white', fontFamily: AppFontBold, fontSize: 18 }}>Book Now</Text>}
                             </Button>
                         </View>
                     </Layout>

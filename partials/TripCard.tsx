@@ -6,6 +6,7 @@ import { Layout, Text, Card, Avatar, Button, Divider } from '@ui-kitten/componen
 import { useNavigation } from '@react-navigation/native';
 import ResolveCurrencySymbol from '../utils/ResolveCurrencySymbol';
 import useAxios from 'axios-hooks'
+import { AppFontBold, AppFontRegular } from '../constants/fonts'
 
 export type TripCardProps = {
   pickupLocation: string
@@ -85,12 +86,12 @@ const TripCard: React.FC<TripCardProps> = (props) => {
               </Layout>
               <Layout style={{ display: 'flex', flexDirection: 'column', width: '90%' }}>
                 <Layout style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', marginBottom: '5%' }}>
-                  <Text style={{ fontSize: 16, fontFamily: 'SF-UI-Display_Bold' }}>{props.pickupLocation}</Text>
-                  <Text style={{ color: '#ACB1C0', fontSize: 13 }}>{props.pickupTime.format('DD MMM,HH:mm')}</Text>
+                  <Text style={{ fontSize: 16, fontFamily: AppFontBold }}>{props.pickupLocation}</Text>
+                  <Text style={{ color: '#ACB1C0', fontSize: 13 }}>{props.pickupTime.format('HH:mm A DD, MMM')}</Text>
                 </Layout>
                 <Layout style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
-                  <Text style={{ fontSize: 16, fontFamily: 'SF-UI-Display_Bold' }}>{props.dropOffLocation}</Text>
-                  <Text style={{ color: '#ACB1C0', fontSize: 13 }}>{props.dropoffTime.format('DD MMM,HH:mm')}</Text>
+                  <Text style={{ fontSize: 16, fontFamily: AppFontBold }}>{props.dropOffLocation}</Text>
+                  <Text style={{ color: '#ACB1C0', fontSize: 13 }}>{props.dropoffTime.format('HH:mm A DD, MMM')}</Text>
                 </Layout>
               </Layout>
             </Layout>
@@ -107,7 +108,7 @@ const TripCard: React.FC<TripCardProps> = (props) => {
                   <Avatar style={{ borderRadius: 10 }} shape='square' source={props.keyLess ? require('../image/keyx.png') : require('../image/key.png')} />
                 </Layout>
                 <Layout>
-                  <Text style={{ fontFamily: 'SF-UI-Display_Bold', fontSize: 15 }} category='h6'>{props.carName}</Text>
+                  <Text style={{ fontFamily: AppFontBold, fontSize: 15 }} category='h6'>{props.carName}</Text>
                   <Text>{props.registratioNumber}</Text>
                 </Layout>
               </Layout>
@@ -115,8 +116,8 @@ const TripCard: React.FC<TripCardProps> = (props) => {
               <Layout style={{ display: 'flex', justifyContent: 'space-between' }}>
                   <Text style={{ color: '#ACB1C0', fontSize: 13 }}>Final cost</Text>
                   <View style={{ display: 'flex', flexDirection: 'row' }}>
-                    {props.currencyCode && <Text style={{ fontSize: 15, fontFamily: 'SF-UI-Display_Bold' }}>{ResolveCurrencySymbol(props.currencyCode)}</Text>}
-                    <Text style={{ fontSize: 15, fontFamily: 'SF-UI-Display_Bold' }}>{props.finalCost}</Text>
+                    {props.currencyCode && <Text style={{ fontSize: 15, fontFamily: AppFontBold }}>{ResolveCurrencySymbol(props.currencyCode)}</Text>}
+                    <Text style={{ fontSize: 15, fontFamily: AppFontBold }}>{props.finalCost}</Text>
                   </View>
                 </Layout>
 

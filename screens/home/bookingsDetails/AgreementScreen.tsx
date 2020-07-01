@@ -1,6 +1,12 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Layout, Text, Button, Input } from '@ui-kitten/components';
 import { SafeAreaView, ScrollView, Image, TextInput, View } from 'react-native';
+import Orientation from 'react-native-orientation-locker';
+import SignatureCapture from 'react-native-signature-capture';
+import { TouchableOpacity, TouchableWithoutFeedback } from 'react-native-gesture-handler';
+import { useFocusEffect } from '@react-navigation/native';
+import BackButton from '../../../partials/BackButton';
+import { AppFontBold, AppFontRegular } from '../../../constants/fonts'
 import MenuButton from '../../../partials/MenuButton';
 
 const DocumentScreen = ({ navigation, route }) => {
@@ -42,7 +48,7 @@ const DocumentScreen = ({ navigation, route }) => {
                         shadowRadius: 13.16,
                         elevation: 10,
                     }}>
-                    {() => <Text style={{ color: 'white', fontFamily: 'SF-UI-Display_Bold', fontSize: 18 }}>Sign agreement</Text>}
+                    {() => <Text style={{ color: 'white', fontFamily: AppFontBold, fontSize: 18 }}>Sign agreement</Text>}
                 </Button>
 
             </Layout>

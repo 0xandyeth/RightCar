@@ -20,7 +20,7 @@ import { FileTypeEnum } from './DocumentUpload/DocumentState';
 import userIsCompany from '../../utils/userIsCompany';
 import TimeCheckbox from '../../partials/TimeCheckbox';
 import { useFocusEffect } from '@react-navigation/native';
-
+import { AppFontBold, AppFontRegular } from '../../constants/fonts'
 
 export default ({ navigation }: StackScreenProps<NonLoginScreenProps & LoginScreenProps>) => {
     const [{ data, loading, error }, doLogin] = useAxios({
@@ -54,7 +54,7 @@ export default ({ navigation }: StackScreenProps<NonLoginScreenProps & LoginScre
                                 <BackButton />
                             </Layout>
                         )}
-                        <Text style={{ textAlign: 'left', fontSize: 24, fontFamily: 'SF-UI-Display_Bold' }} category='s2'>
+                        <Text style={{ textAlign: 'left', fontSize: 24, fontFamily: AppFontBold }} category='s2'>
                             Profile
                         </Text>
                     </Layout>
@@ -106,7 +106,7 @@ export default ({ navigation }: StackScreenProps<NonLoginScreenProps & LoginScre
                                         indicatorStyle={{ backgroundColor: '#41d5fb' }}
                                         selectedIndex={selectedIndex}
                                         onSelect={index => setSelectedIndex(index)}>
-                                        <Tab style={{ paddingTop: '6%', paddingBottom: '1%' }} title={evaProps => <Text {...evaProps} style={{ fontFamily: 'SF-UI-Display_Bold', color: selectedIndex == 0 ? '#41d5fb' : '#aeb1c3' }}>PROFILE</Text>} >
+                                        <Tab style={{ paddingTop: '6%', paddingBottom: '1%' }} title={evaProps => <Text {...evaProps} style={{ fontFamily: AppFontBold, color: selectedIndex == 0 ? '#41d5fb' : '#aeb1c3' }}>PROFILE</Text>} >
                                             <>
                                                 <Input
                                                     status={errors.emailaddress && touched.emailaddress ? 'danger' : undefined}
@@ -277,14 +277,14 @@ export default ({ navigation }: StackScreenProps<NonLoginScreenProps & LoginScre
                                                         elevation: 10,
                                                     }}>
                                                     {() => {
-                                                        return <Text style={{ fontFamily: 'SF-UI-Display_Bold', color: loading ? "#ACB1C0" : 'white', fontSize: 18 }}>
+                                                        return <Text style={{ fontFamily: AppFontBold, color: loading ? "#ACB1C0" : 'white', fontSize: 18 }}>
                                                             {hasFullProfile && !hasAllFiles ? "Next" : 'Save'}
                                                         </Text>
                                                     }}
                                                 </Button>
                                             </>
                                         </Tab>
-                                        <Tab style={{ paddingTop: '6%', paddingBottom: '1%' }} title={evaProps => <Text {...evaProps} style={{ fontFamily: 'SF-UI-Display_Bold', color: selectedIndex == 1 ? '#41d5fb' : '#aeb1c3' }}>DOCUMENTS</Text>} >
+                                        <Tab style={{ paddingTop: '6%', paddingBottom: '1%' }} title={evaProps => <Text {...evaProps} style={{ fontFamily: AppFontBold, color: selectedIndex == 1 ? '#41d5fb' : '#aeb1c3' }}>DOCUMENTS</Text>} >
                                             <>
                                                 {profile?.passimage != "" ? (
                                                     <TimeCheckbox

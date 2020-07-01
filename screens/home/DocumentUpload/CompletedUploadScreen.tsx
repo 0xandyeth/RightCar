@@ -16,6 +16,7 @@ import useAxios from 'axios-hooks'
 import { useGlobalState, dispatchGlobalState } from '../../../state';
 import { StackScreenProps } from '@react-navigation/stack';
 import { LoginScreenProps } from '../../../types';
+import { AppFontBold, AppFontRegular } from '../../../constants/fonts'
 
 const DATE_FORMAT = 'MMM DD,YYYY'
 const formatDateService = new NativeDateService('en', { format: DATE_FORMAT });
@@ -82,7 +83,7 @@ const DocumentScreen = ({ route, navigation }: Props) => {
                         <>
                             <ScrollView keyboardShouldPersistTaps={"handled"} contentContainerStyle={{ flexGrow: 1 }}>
                                 <View style={{ backgroundColor: 'white', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                                    <Text style={{ color: 'black', textAlign: 'center', fontSize: 26, fontFamily: 'SF-UI-Display_Bold' }} category='s2'>
+                                    <Text style={{ color: 'black', textAlign: 'center', fontSize: 26, fontFamily: AppFontBold }} category='s2'>
                                         Thanks! Your providing all your details, we are currently reviewing your information and shall let you know once they are approved
                                     </Text>
                                 </View>
@@ -107,7 +108,7 @@ const DocumentScreen = ({ route, navigation }: Props) => {
                                         shadowRadius: 13.16,
                                         elevation: 10,
                                     }}>
-                                    {() => <Text style={{ fontFamily: 'SF-UI-Display_Bold', color: 'white', fontSize: 18 }}>Ok</Text>}
+                                    {() => <Text style={{ fontFamily: AppFontBold, color: 'white', fontSize: 18 }}>Ok</Text>}
                                 </Button>
                             </Layout>
                         </>

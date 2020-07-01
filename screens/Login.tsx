@@ -19,6 +19,7 @@ import { handlePermissionPromt, handleUserData } from '../utils/FacebookAuth';
 import { axiosInstance } from '../utils/AxiosBootstrap';
 import userHasFullProfile from '../utils/userHasFullProfile';
 import * as Progress from 'react-native-progress';
+import { AppFontBold, AppFontRegular } from '../constants/fonts'
 
 export default ({ navigation }: StackScreenProps<NonLoginScreenProps & LoginScreenProps>) => {
     const [{ data, loading, error }, doLogin] = useAxios({
@@ -57,7 +58,7 @@ export default ({ navigation }: StackScreenProps<NonLoginScreenProps & LoginScre
 
                 <Layout style={{ flex: 1, padding: '3%' }}>
                     <Layout style={{ paddingBottom: '10%' }}>
-                        <Text style={{ textAlign: 'left', fontSize: 24, marginBottom: 10, fontFamily: 'SF-UI-Display_Bold' }} category='s2'>
+                        <Text style={{ textAlign: 'left', fontSize: 24, marginBottom: 10, fontFamily: AppFontBold }} category='s2'>
                             Sign in to your account
                         </Text>
                     </Layout>
@@ -148,7 +149,7 @@ export default ({ navigation }: StackScreenProps<NonLoginScreenProps & LoginScre
                                             shadowRadius: 13.16,
                                             elevation: 10,
                                         }}>
-                                        {() => <Text style={{ fontFamily: 'SF-UI-Display_Bold', color: loading ? "#ACB1C0" : 'white', fontSize: 18 }}>Sign in</Text>}
+                                        {() => <Text style={{ fontFamily: AppFontBold, color: loading ? "#ACB1C0" : 'white', fontSize: 18 }}>Sign in</Text>}
                                     </Button>
                                 </>
                             )

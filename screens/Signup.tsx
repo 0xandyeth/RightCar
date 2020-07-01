@@ -20,6 +20,7 @@ import TwitterButton from '../partials/TwitterButton';
 import { LoginManager, GraphRequest, GraphRequestManager } from "react-native-fbsdk";
 import { handlePermissionPromt, handleUserData } from '../utils/FacebookAuth';
 import { axiosInstance } from '../utils/AxiosBootstrap';
+import { AppFontBold, AppFontRegular } from '../constants/fonts'
 
 
 export default () => {
@@ -58,7 +59,7 @@ export default () => {
                     <Layout style={{ paddingBottom: '5%' }}>
                         <Layout style={{ flex: 1, paddingTop: '3%', paddingBottom: '2%', display: 'flex', flexDirection: 'row' }}>
                             <BackButton />
-                            <Text style={{ textAlign: 'left', paddingLeft: '3%',fontSize: 25, marginBottom: '3%', fontFamily: 'SF-UI-Display_Bold' }} category='s2'>Create your account</Text>
+                            <Text style={{ textAlign: 'left', paddingLeft: '3%',fontSize: 25, marginBottom: '3%', fontFamily: AppFontBold }} category='s2'>Create your account</Text>
                         </Layout>
                         <Layout style={{ display: 'flex', flexDirection: 'row' }}>
                             <Text style={{ color: 'black' }}>Already have an account? </Text>
@@ -215,7 +216,7 @@ export default () => {
                                             shadowRadius: 13.16,
                                             elevation: 10,
                                         }}>
-                                        {() => <Text style={{ fontFamily: 'SF-UI-Display_Bold', color: loading ? "#ACB1C0" : 'white', fontSize: 18 }}>Sign up</Text>}
+                                        {() => <Text style={{ fontFamily: AppFontBold, color: loading ? "#ACB1C0" : 'white', fontSize: 18 }}>Sign up</Text>}
                                     </Button>
                                 </>
                             );

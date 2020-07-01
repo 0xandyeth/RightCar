@@ -6,8 +6,8 @@ import { CommonActions } from '@react-navigation/native';
 import { GRCGDS_BACKEND } from 'react-native-dotenv';
 import useAxios from 'axios-hooks'
 import { useCarDetailState } from './detailsState';
+import { AppFontBold, AppFontRegular } from '../../../constants/fonts'
 import MenuButton from '../../../partials/MenuButton';
-
 
 const DocumentScreen = ({ navigation, route }) => {
   const [details] = useCarDetailState("details");
@@ -75,7 +75,7 @@ const DocumentScreen = ({ navigation, route }) => {
             shadowRadius: 13.16,
             elevation: 10,
           }}>
-          {() => <Text style={{ color: 'white', fontFamily: 'SF-UI-Display_Bold', fontSize: 18 }}>Complete</Text>}
+          {() => <Text style={{ color: 'white', fontFamily: AppFontBold, fontSize: 18 }}>Complete</Text>}
         </Button>
 
       </Layout>

@@ -6,8 +6,8 @@ import ImagePicker, { ImagePickerResponse } from 'react-native-image-picker';
 import LoadingSpinner from '../../../partials/LoadingSpinner';
 import { useRoute } from '@react-navigation/native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { AppFontBold, AppFontRegular } from '../../../constants/fonts'
 import MenuButton from '../../../partials/MenuButton';
-
 const imageArr = []
 
 imageArr[0] = require('../../../image/car-1.jpg')
@@ -48,7 +48,7 @@ const DocumentScreen = ({ navigation }) => {
               {Array(maxPhotosAmount).fill(1).map((_, idx) => {
                 return (
                   <View style={{ marginLeft: '2%', borderWidth: 1, borderColor: pictures[idx] ? '#41d5fb' : 'white', backgroundColor: pictures[idx] ? 'white' : '#41d5fb', width: 40, height: 40, borderRadius: 40 / 2, display: 'flex', justifyContent: 'center', alignContent: 'center' }}>
-                    <Text style={{ color: 'white', textAlign: 'center', fontFamily: 'SF-UI-Display_Bold', fontSize: 20 }}>
+                    <Text style={{ color: 'white', textAlign: 'center', fontFamily: AppFontBold, fontSize: 20 }}>
                       {!pictures[idx] ? idx + 1 : <MaterialIcons style={{ color: pictures[idx] ? '#41d5fb' : "white" }} size={24} name="check" />}
                     </Text>
                   </View>
@@ -109,7 +109,7 @@ const DocumentScreen = ({ navigation }) => {
                 elevation: 10,
               }}>
               {() => {
-                return <Text style={{ fontFamily: 'SF-UI-Display_Bold', color: !pictures[currentPicktureIndex] ? "#ACB1C0" : 'white', fontSize: 18 }}>
+                return <Text style={{ fontFamily: AppFontBold, color: !pictures[currentPicktureIndex] ? "#ACB1C0" : 'white', fontSize: 18 }}>
                   Save & Next
                 </Text>
               }}

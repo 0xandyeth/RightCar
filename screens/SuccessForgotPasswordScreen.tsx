@@ -8,6 +8,7 @@ import { GRCGDS_BACKEND } from 'react-native-dotenv';
 import LoadingSpinner from '../partials/LoadingSpinner';
 import { useNavigation } from '@react-navigation/native';
 import BackButton from '../partials/BackButton';
+import { AppFontBold, AppFontRegular } from '../constants/fonts'
 
 const DocumentScreen = () => {
   const [profile] = useGlobalState('profile');
@@ -31,7 +32,7 @@ const DocumentScreen = () => {
         </Layout>
 
         <Layout style={{ display: 'flex', flexDirection: 'column', backgroundColor: '#00000000', marginTop: '15%', marginBottom: '10%' }}>
-          <Text style={{ fontFamily: 'SF-UI-Display_Bold', textAlign: 'center' }} category="h3">Success</Text>
+          <Text style={{ fontFamily: AppFontBold, textAlign: 'center' }} category="h3">Success</Text>
           <Text style={{ color: '#8F9BB3', textAlign: 'center', marginBottom: '15%' }} category="h6">Your new password has been sent to your registered email ID</Text>
         </Layout>
 
@@ -56,7 +57,7 @@ const DocumentScreen = () => {
             shadowRadius: 13.16,
             elevation: 10,
           }}>
-          {() => <Text style={{ color: 'white', fontFamily: 'SF-UI-Display_Bold', fontSize: 18 }}>Ok</Text>}
+          {() => <Text style={{ color: 'white', fontFamily: AppFontBold, fontSize: 18 }}>Ok</Text>}
         </Button>
 
       </Layout>

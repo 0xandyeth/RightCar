@@ -11,7 +11,7 @@ import { useCreateBookingState } from './CreateBookingState';
 import { VehVendorAvail, VehRentalCore } from '../../../type/SearchVehicleResponse';
 import { ScrollView } from 'react-native-gesture-handler';
 import GetCategoryByAcrissCode from '../../../utils/GetCategoryByAcrissCode';
-
+import { AppFontBold, AppFontRegular } from '../../../constants/fonts'
 const _dataProvider = new DataProvider((r1, r2) => r1.VehID !== r2.VehID)
 
 type ParamList = {
@@ -133,12 +133,12 @@ const DocumentScreen = () => {
                     <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', backgroundColor: '#41d5fb', marginBottom: '2%' }}>
                       <View style={{ padding: '3%' }}>
                         <View style={{ width: '100%' }}>
-                          <Text style={{ fontSize: 18, textAlign: 'left', fontFamily: 'SF-UI-Display_Bold' }}>{route.params.searchParams.pickUpLocation.locationname}</Text>
+                          <Text style={{ fontSize: 18, textAlign: 'left', fontFamily: AppFontBold }}>{route.params.searchParams.pickUpLocation.locationname}</Text>
                           <Text style={{ fontSize: 15, textAlign: 'left' }}>{route.params.searchParams.pickUpDate.format('MMM DD, h:mm')}</Text>
                         </View>
 
                         <View style={{ width: '100%' }}>
-                          <Text style={{ fontSize: 18, textAlign: 'left', fontFamily: 'SF-UI-Display_Bold' }}>{route.params.searchParams.dropOffLocation.locationname}</Text>
+                          <Text style={{ fontSize: 18, textAlign: 'left', fontFamily: AppFontBold }}>{route.params.searchParams.dropOffLocation.locationname}</Text>
                           <Text style={{ fontSize: 15, textAlign: 'left' }}>{route.params.searchParams.dropOffDate.format('MMM DD, h:mm')}</Text>
                         </View>
                       </View>
@@ -156,7 +156,7 @@ const DocumentScreen = () => {
                       <TouchableOpacity style={{ width: '49%' }} onPress={() => setShowSortModal(true)} >
                         <View style={{ alignItems: 'center', display: 'flex', flexDirection: 'row', justifyContent: 'center', borderWidth: 1, borderColor: '#00000050' }}>
                           <MaterialCommunityIcons style={{ alignSelf: 'flex-start', marginTop: 'auto', marginBottom: 'auto', color: 'gray' }} name={"sort-variant"} size={18} />
-                          <Text style={{ fontSize: 18, textAlign: 'center', width: '50%', fontFamily: 'SF-UI-Display_Bold' }}>
+                          <Text style={{ fontSize: 18, textAlign: 'center', width: '50%', fontFamily: AppFontBold }}>
                             Sort By
                         </Text>
                         </View>
@@ -164,7 +164,7 @@ const DocumentScreen = () => {
                       <TouchableOpacity style={{ width: '49%', marginLeft: '1%' }} onPress={() => setShowFilterModal(true)}>
                         <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', borderWidth: 1, borderColor: '#00000050' }}>
                           <MaterialCommunityIcons style={{ alignSelf: 'flex-start', marginTop: 'auto', marginBottom: 'auto', color: 'gray' }} name={"filter"} size={18} />
-                          <Text style={{ fontSize: 18, textAlign: 'center', width: '50%', fontFamily: 'SF-UI-Display_Bold' }}>
+                          <Text style={{ fontSize: 18, textAlign: 'center', width: '50%', fontFamily: AppFontBold }}>
                             Filter
                         </Text>
                         </View>
@@ -204,7 +204,7 @@ const DocumentScreen = () => {
             shadowRadius: 13.16,
             elevation: 10,
           }}>
-          {() => <Text style={{ fontFamily: 'SF-UI-Display_Bold', color: 'white', fontSize: 18 }}>Go back</Text>}
+          {() => <Text style={{ fontFamily: AppFontBold, color: 'white', fontSize: 18 }}>Go back</Text>}
         </Button>
       )}
       {route.params.cars.length != 0 && (
@@ -230,7 +230,7 @@ const DocumentScreen = () => {
             shadowRadius: 13.16,
             elevation: 10,
           }}>
-          {() => <Text style={{ fontFamily: 'SF-UI-Display_Bold', color: 'white', fontSize: 18 }}>BOOK NOW</Text>}
+          {() => <Text style={{ fontFamily: AppFontBold, color: 'white', fontSize: 18 }}>BOOK NOW</Text>}
         </Button>
       )}
       <Modal
@@ -242,8 +242,8 @@ const DocumentScreen = () => {
         }}>
         <Layout style={{ height: '100%', padding: '3%' }}>
           <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
-            <Text style={{ marginBottom: '6%' }} category="h5">Sort By</Text>
-            <Text onPress={() => setShowSortModal(false)} style={{ fontFamily: 'SF-UI-Display_Bold' }} category="h3">X</Text>
+            <Text style={{ marginBottom: '6%' }} category="h3">Sort By</Text>
+            <Text onPress={() => setShowSortModal(false)} style={{ fontFamily: AppFontBold }} category="h3">X</Text>
           </View>
           <TouchableOpacity onPress={() => {
             setShowSortModal(false)
@@ -279,8 +279,8 @@ const DocumentScreen = () => {
         }}>
         <Layout style={{ height: '100%', padding: '3%' }}>
           <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
-            <Text style={{ marginBottom: '4%' }} category="h5">Filter By</Text>
-            <Text onPress={() => setShowFilterModal(false)} style={{ fontFamily: 'SF-UI-Display_Bold' }} category="h3">X</Text>
+            <Text style={{ marginBottom: '6%' }} category="h3">Filter By</Text>
+            <Text onPress={() => setShowFilterModal(false)} style={{ fontFamily: AppFontBold }} category="h3">X</Text>
           </View>
           <ScrollView>
             <Text style={{ fontSize: 18, color: '#33adcc', fontFamily: "SF-UI-Display_Bold", marginBottom: '3%' }}>Transmission</Text>
@@ -371,7 +371,7 @@ const DocumentScreen = () => {
                 return (
                   <>
                     <MaterialCommunityIcons style={{ color: 'white' }} size={26} name="close" />
-                    <Text style={{ fontFamily: 'SF-UI-Display_Bold', color: 'white', fontSize: 18 }}>Close</Text>
+                    <Text style={{ fontFamily: AppFontBold, color: 'white', fontSize: 18 }}>Close</Text>
                   </>
                 );
               }}
@@ -400,7 +400,7 @@ const DocumentScreen = () => {
                 return (
                   <>
                     <MaterialCommunityIcons style={{ color: 'white' }} size={26} name="check" />
-                    <Text style={{ fontFamily: 'SF-UI-Display_Bold', color: 'white', fontSize: 18 }}>Apply</Text>
+                    <Text style={{ fontFamily: AppFontBold, color: 'white', fontSize: 18 }}>Apply</Text>
                   </>
                 );
               }}

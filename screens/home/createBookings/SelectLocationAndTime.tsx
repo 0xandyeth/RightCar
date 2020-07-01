@@ -14,7 +14,7 @@ import moment from 'moment';
 import { GRCGDS_BACKEND } from 'react-native-dotenv';
 import LoadingSpinner from '../../../partials/LoadingSpinner';
 import { VehicleResponse } from '../../../types/SearchVehicleResponse';
-
+import { AppFontBold, AppFontRegular } from '../../../constants/fonts'
 
 export default () => {
     const navigation = useNavigation();
@@ -86,16 +86,15 @@ export default () => {
                                     }
                                 } else {
                                     setDepartureTime(d)
-                                }
-                                setReturnTime(moment(d).add('days', 1).toDate())
-                            }}
-                        />
-                        <Text style={{ fontFamily: 'SF-UI-Display_Bold' }}>Return Time</Text>
-                        <DatePicker
-                            minuteInterval={30}
-                            date={returnTime}
-                            onDateChange={(d) => setReturnTime(d)}
-                        />
+                                    setReturnTime(moment(d).add('days', 1).toDate())
+                                }}
+                            />
+                            <Text style={{ fontFamily: AppFontBold }}>Return Time</Text>
+                            <DatePicker
+                                minuteInterval={30}
+                                date={returnTime}
+                                onDateChange={(d) => setReturnTime(d)}
+                            />
                         </>
                     )}
                 </Layout>
@@ -154,7 +153,7 @@ export default () => {
                             paddingRight: 20,
                             marginBottom: '2%'
                         }}>
-                        {() => <Text style={{ color: loading ? "#ACB1C0" : 'white', fontFamily: 'SF-UI-Display_Bold', fontSize: 18 }}>Search</Text>}
+                        {() => <Text style={{ color: loading ? "#ACB1C0" : 'white', fontFamily: AppFontBold, fontSize: 18 }}>Search</Text>}
                     </Button>
                 </Layout>
             </ScrollView >
